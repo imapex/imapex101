@@ -1,3 +1,5 @@
+[Class Contents](../README.md)
+
 # Module 2: Advanced Git and GitHub
 
 * README Standards and Expectations
