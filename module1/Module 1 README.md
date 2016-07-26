@@ -27,3 +27,15 @@
   * Vagrantfile
   * .drone.yml
   * drone-secrets-sample.yml
+
+# 12 Factor Concepts
+
+## Things to cover
+* What is a "12 Factor" App and where did it come from
+* What are the 12 Factors
+* How much should we care
+* Links for more information 
+
+## What is a "12 Factor" App and where did it come from
+
+The 12 Factor Application is a methodology proposed 
