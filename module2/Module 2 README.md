@@ -8,6 +8,9 @@ Prerequisites
 For this module it is assumed that the reader has a basic working knowledge of basic git workflow including creating
 repositories, cloning, and making commits to a simple repository.
 
+
+The official tutorial for Github is a useful resource and can be find [Here](https://guides.github.com/activities/hello-world/)
+
 Issues / Tags
 -----------------------
 
@@ -29,14 +32,16 @@ Forking vs Branching
 Forking and Branching are mechanisms used by Git to diverge from the main code line for feature development, or bug
 fixes. Branches are seperate trains within the same repository, whereas a fork, creates a copy of the entire repository in
 a different location (user account). From the perspective of a single developer the two are very similar, however, it
-is important to consider what other developers are doing relative to the project.
+is important to consider what other developers are doing relative to the project. The fork based workflow is dominant in
+opensource projects as contributors likely would not have access to push code to the main repository.
 
 
 Stashing Changes
 ------------------------
 
 Another useful workflow within Git is the ability to stash local changes prior to performing other operations on the
-repository - a good example of this is that you've been working on some changes and
+repository - a good example of this is that you've been working on some changes and want to pull the latest changes that
+others have committed.
 
 
 Discussion Items for kickoff
