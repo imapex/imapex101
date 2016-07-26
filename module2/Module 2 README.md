@@ -11,7 +11,9 @@ repositories, cloning, and making commits to a simple repository.
 Issues / Tags
 -----------------------
 
-Issues will be the primary vehicle by which feature enhancements and bug fixes will be tracked.
+Issues are the primary vehicle by which feature enhancements and bug fixes are tracked.
+
+Labels are used to categorize the the issue. Examples of tags are enhancement, bug, question, help wanted.
 
 *TIP:* To close an issue in the same repository, use one of the keywords in the list below followed by a
 reference to the issue number in the commit message. For example, a commit message with Fixes #45 will close issue 45
@@ -30,13 +32,19 @@ a different location (user account). From the perspective of a single developer 
 is important to consider what other developers are doing relative to the project.
 
 
+Stashing Changes
+------------------------
+
+Another useful workflow within Git is the ability to stash local changes prior to performing other operations on the
+repository - a good example of this is that you've been working on some changes and
+
+
 Discussion Items for kickoff
 
 * Production deployments will be done from the master branch
 * All feature development should be done via the developers fork / branch
 * All feature development should have an open issue tagged enhancement for tracking purposes
 * All bug fixes should have an open issue for tracking purposes
-
 
 
 
@@ -66,13 +74,59 @@ Pull Requests
 Pull requests should be issues against the main repositories 'development' branch
 
 
-Public vs Private Repos
------------------------
-
 TODO
 -----------------------
+* Public vs Private Repos
 * Git Skills
 * Rebasing
 * Fast Forward
 * Forking and Syncing
 * Managing Multiple Development Environments
+
+
+Lab Exercise
+=============================
+
+For the lab exercise of this module we will be combining these steps into a real-world workflow.
+
+
+# Instructions
+
+1. Open an Issue against the imapex/101-github-lab referencing the fact that your email is missing from the CONTRIBUTORS.txt
+file. As you are now going to be contributing to the project - this is obviously and enhancement, so label it as such!!!
+
+2. Assign yourself to the issue
+
+3. Create a fork of the imapex/101-github-lab repository
+
+   git clone https://github.com/imapex/101-github-lab
+
+4. Create a new branch for your enhancement
+
+   git branch -m adding-email-addr
+
+*NOTE* If your branch is going to exist for a longer period of time why you are developing your feature you could add
+the upstream repo as a remote for your repository as well.
+
+
+   git remote add --track master upstream git://github.com/upstreamname/projectname.git
+
+Now you can get updates from the main project as well by using:
+
+   git fetch upstream
+   git merge upstream/master
+
+5. Make the appropriate changes to add your email address to the CONTRIBUTORS.txt file.
+
+6. Commit your changes, be sure to indicate the issue number that you are working on in your commit message
+
+   git commit -m "added email address - closes #XXX"
+
+5. From your web browser, go to the github page of your fork, and open a pull request.
+
+6. Navigate to the upstream repository [IMAPEX/101-github-lab](https://github.com/imapex/101-github-lab) and
+verify that the pull request was issued.  From here discussion can occur on the proposed changes, and the owner
+of the repository can merge the changes in once completed.  *Note* An opened PR is often a trigger for a something to
+happen in the build pipeline, such as automated testing of the proposed changes.
+
+
