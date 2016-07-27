@@ -4,7 +4,7 @@
 
 * [12 Factor Concepts](#12-factor-concepts)
   * [Secret Management](#a-sidebar-on-secrets)
-* Basic Linux Tools
+* [Basic Linux Tools](# Basic Linux Tools)
   * curl
   * bash scripts
   * awk
