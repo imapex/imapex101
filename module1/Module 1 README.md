@@ -320,7 +320,7 @@ awk '/hello/ { print $2 }' hello.txt
 	* `{ print $2 }` - the second part is what to do with the match lines.  Here we are asking to print out the second field.  By default, awk considers whitespace to be field delimeters. 
 * `hello.txt` - the file to process
 
-### Experiments part 1
+### Experiments
 
 * Create a file called `hello.txt` that contains this data 
 	
@@ -390,8 +390,305 @@ The above examples just introduce what awk can do.  Here are some links for when
 
 ## grep
 
+grep, and it's many variations, is a commonly used pattern matching utility.  It leverages regular expressions to output lines matching a given pattern.  Unlike awk, grep simply returns the matched lines as they are, no processing on output is done.  
 
+grep is often used as a secondary command where output from one command is "piped" to it for filtering.  This example shows a common usage. 
+
+```
+ls ~/coding | grep imapex
+
+imapex
+imapex101
+```
+
+The power of grep comes by leveraging actual regular expressions, and not just static patterns.  
+
+### Experiments 
+
+These examples will use the hello.txt file created above.  
+
+```
+cat hello.txt
+
+hello world
+goodbye world
+good morning
+good evening
+life is a box of chocolates
+you never know what you're going to get
+```
+
+* Match lines containing the word 'hello'
+
+	```
+	grep 'hello' hello.txt
+	
+	hello world
+	```
+	
+* Match lines containing the word 'hello' or 'world'
+
+	```
+	grep '(hello)|(world)' hello.txt
+	
+	# Nothing returned... 
+	# Because this qualifies as an "extended" regular expression
+	# use grep -E or egrep 
+	
+	grep -E '(hello)|(world)' hello.txt
+	
+	hello world
+	goodbye world
+	```
+
+* Match lines containing the letter 'x' or the leter 't'
+
+	```
+	egrep '[xt]' hello.txt
+	
+	```
+
+### Links 
+
+* [http://ryanstutorials.net/linuxtutorial/cheatsheetgrep.php](http://ryanstutorials.net/linuxtutorial/cheatsheetgrep.php) 
+* [http://ryanstutorials.net/linuxtutorial/grep.php](http://ryanstutorials.net/linuxtutorial/grep.php)
+
+### Go do it exercises 
+
+Using the text copy of Hamlet from above 
+
+* Find all lines where Hamlet is the FIRST word 
+* Find all lines where death is the LAST word 
+	* Find lines where there is a single character following the word death at the end of a line  
+* Are there any lines where 'Hamlet' and 'madness' appear on the same line?  
 
 ## sed
 
+sed is the **s**tream **ed**itor tool in Unix.  Stream means is makes changes while it process data flowing through the application.  It is most often used for making changes to files (either in place or to create a new file).  
+
+### Experiments 
+
+* Change 'sad' to 'happy' 
+	* Use the `s/regex/repl/` command structure.  `s` means substitute. 
+
+	```
+	echo 'I am sad.' | sed 's/sad/happy/'
+	
+	I am happy.
+	```
+	
+* Again, but really sad
+	* Need to use the `g` flag to indicate a global change, and not just a first match change. 
+
+	```
+	echo 'I am sad.  So very very sad...' | sed 's/sad/happy/g'
+	
+	I am happy.  So very very happy...
+	```
+
+* If you are matching text that contains `/` it can be a pain to escape them all, so you can use `_`, `:`, `|` as alternatives.  Just pick something that isn't in your string.  
+
+	```
+	echo 'I am sad.  So very very sad...' | sed 's:sad:happy:g'
+	
+	I am happy.  So very very happy...
+	```
+
+* sed much more useful working with files.  Let's emphasize 'good' to 'GOOD'
+
+	```
+	sed 's/good/GOOD/' hello.txt
+	
+	hello world
+	GOODbye world
+	GOOD morning
+	GOOD evening
+	life is a box of chocolates
+	you never know what you're going to get
+	
+	# Whoops... didn't want to chagne goodbye, indicate word breaks
+	sed 's/good /GOOD /' hello.txt
+	
+	hello world
+	goodbye world
+	GOOD morning
+	GOOD evening
+	life is a box of chocolates
+	you never know what you're going to get
+	```
+
+* And save the output to a new file 
+
+	```
+	sed 's/good /GOOD /' hello.txt > hello2.txt
+	```
+
+* Update the original file (and backup the old data) 
+
+	```
+	sed -i '.bak' 's/good /GOOD /' hello.txt 
+	
+	cat hello.txt
+	
+	hello world
+	goodbye world
+	GOOD morning
+	GOOD evening
+	life is a box of chocolates
+	you never know what you're going to get
+	
+	# Put it back the way it was... 
+	sed -i '.bak' 's/GOOD /good /' hello.txt 
+	```
+	
+### Links 
+
+* [http://www.grymoire.com/Unix/Sed.html](http://www.grymoire.com/Unix/Sed.html)
+* [http://www.catonmat.net/download/sed.stream.editor.cheat.sheet.pdf](http://www.catonmat.net/download/sed.stream.editor.cheat.sheet.pdf) 
+
+### Go do it exercises
+
+Once again using Hamlet
+
+* Create a new copy of the Hamlet text called 'Omlet' where all references to Hamlet are changed to Omlet 
+* Create a new copy of Hamlet where references to death are changed to life
+
+
 ## bash scripts
+
+Using the above tools individually can be very helpful, but where you're most likely to use them will be as part of a bash script to setup or deploy your applicaiton.  Or as the entire application itself.  
+
+The simplest bash scripts just execute a command, or series of commands, but the most useful ones leverage processing logic similar to other scripting or programming languages.  Here we'll go through the most common constructs to be familiar using.  
+
+### The sh-bang line
+Begin your scripts like this so the computer knows how to execute them.  
+
+```
+#! /bin/bash
+```
+
+### Using variables 
+
+```
+# Create a variable called myvar 
+myvar="Hello world!"
+
+# Use the variable 
+echo $myvar
+
+```
+
+### Asking user for input 
+You can ask the user to provide an input.  It then becomes available as a variable.  
+
+```
+# Ask user for their name
+echo "What is your name?"
+
+# "read" the input and save to variable 
+read username
+
+echo "The name given was: $username."
+
+```
+
+### If statements 
+
+```
+if [ $username == "Hank" ]
+then 
+	echo "You are Hank."
+else
+	echo "Nope... you are not Hank."
+fi
+```
+
+#### Basic Conditionals to know
+
+* String comparisons 
+	* `==` - strings are equal 
+	* `!=` - strings are NOT equal 
+* Numeric Comparisons 
+	* `-eq` - equal 
+	* `-ne` - NOT equal 
+	* `-gt` - greater than 
+	* `-ge` - greater than or equal
+	* `-lt` - less than 
+	* `-le` - less than or equal
+	
+#### Testing success/failure of a command
+
+A very common usage of the if condition is to test if a previous command exited successfully, indicated by an exit code of `0`.  ANything other than a `0` is considered to be an error condition.  The variable `$?` will contain the exit code from the last run command.  Here is a simple script that verifies a successful execution of the previous command.  
+
+```
+#! /bin/bash 
+
+echo "This will work!"
+
+if [ $? -eq 0 ]
+then 
+	echo "Yep it worked"
+else 
+	echo "It didn't work :( " 
+fi
+
+```
+
+### Loops 
+Looping in bash is a little different from other languages... 
+
+* for loops - Used to iterate over a list of words in a string
+
+	```
+	#!/bin/bash
+   for i in $( ls ); do
+       echo item: $i
+   done		
+	```
+	
+* while loops - Loops until a condition is met 
+
+	```
+	#!/bin/bash 
+	COUNTER=0
+	while [  $COUNTER -lt 10 ]; do
+		echo The counter is $COUNTER
+		COUNTER=COUNTER+1 
+	done	
+	```	
+
+#### Common use of While loop... waiting for something to happen
+
+In a script, you may want to wait for some previous command to have its full effect, or some other condition to come about.  You can use the while loop for this to test your condition, but it's a good idea to insert a `sleep` command in the loop to prevent your script from testing a condition to rapidly.  You can quickly have a negative effect on your own or remote machines by loops that are uncontrolled.  Here's an example with a sleep inserted to pause 5 seconds between entries.  
+
+```
+#!/bin/bash 
+COUNTER=0
+while [  $COUNTER -lt 10 ]; do
+	echo The counter is $COUNTER
+	COUNTER=COUNTER+1 
+	sleep 5
+done	
+```	
+
+
+### Links 
+
+* [http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_01.html](http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_01.html)
+* [https://linuxconfig.org/bash-scripting-tutorial](https://linuxconfig.org/bash-scripting-tutorial)
+
+### Example script walkthrough 
+
+Let's look at an example real script used as part of the [MyHero Demo](https://github.com/hpreston/myhero_demo) application.  
+
+[Sample myhero_install.sh](https://github.com/hpreston/myhero_demo/blob/master/myhero-install.sh)
+
+### Go do it exercises 
+
+This exercise will combine skills from the full Linux tools content.  
+
+* Create a bash script that does the following
+	* Ask the user for their Spark Token 
+	* Use that token to make an API call to Spark and get a list of their Spark Rooms.  Save the outputed JSON into a file.  Be sure to format the JSON in a pretty way.  
+	* Search through the Saved file and create a new file containing the list of roomIds, and only the roomIds
+	* Create a new file based on the full returned room JSON where all double quotes are replaced with single quotes.  
