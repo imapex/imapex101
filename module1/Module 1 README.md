@@ -4,18 +4,18 @@
 
 * [12 Factor Concepts](#12-factor-concepts)
   * [Secret Management](#a-sidebar-on-secrets)
-* [Basic Linux Tools](# Basic Linux Tools)
-  * curl
-  * bash scripts
-  * awk
-  * grep
-  * sed
+* [Basic Linux Tools](#basic-linux-tools)
+  * [curl](#curl)
+  * [bash scripts](#bash-scripts)
+  * [awk](#awk)
+  * [grep](#grep)
+  * [sed](#sed)
 * Markdown
-* Vagrant
+* [Vagrant](#vagrant)
 * OpenSource Licenses
-* Extra Python Skills
-  * pip and dependencies
-  * Virtual Environments
+* [Python Skills](#python-skills)
+  * [pip and dependencies](#pip)
+  * [Virtual Environments](#virtualenv)
 * Writing and Using Test Cases
 * Linting
 * Boiler Plate Application
