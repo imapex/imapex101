@@ -3,7 +3,7 @@
 # Module 1: General Development Skills
 
 * [12 Factor Concepts](#12-factor-concepts)
-  * Secret Management
+  * [Secret Management](#a-sidebar-on-secrets)
 * Basic Linux Tools
   * curl
   * bash scripts
@@ -92,7 +92,7 @@ Nearly every application of significance has a need to gather, manipulate, store
 
 Software development is like any other area of IT.  There are basic capabilities and technologies, then there are strategies for using them.  When we want to be relevant to network engineers, we study strategies and design with "3 Tier Network Architectures" and more recently "Spine-Leaf" in mind.  When we want to be relevant to software developers, we need to understand the common practices and methods to engage in discussions.  
 
-## A sidebar on "Secrets"
+## A sidebar on Secrets
 
 In development a "secret" can loosely be defined as anything you wouldn't want everyone else in the world to know.  This includes the obvious things like: 
 
