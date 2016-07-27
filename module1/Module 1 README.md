@@ -1100,15 +1100,146 @@ The common practice with python applciations is to include a file called `requir
 
 It is up to the developer today to consider dependencies when building applciations, and if you follow the 12 Factor App principals, declaration and islotation are critical.  As we're setting out to build application demos, understanding how to address dependencies is critical to providing useful applicaitons, and not just toy-code.  
 
+Every language and framework for development has dependencies.  One part of learning a language you plan to use for application or demo development needs to be a consideration on how they are handled and documented.  You'll want to find the equivelant of *pip* in whichever langague you are using.  
 
 ## virtualenv
 
+Virtual Environments are a capability of Python to create isolated working environments on a single machine with completely different configuraitons and dependencies deployed.  Nearly everyone in IT has horror stories of dependency conflicts between software installed on the same computer.  
+
+One example that came up quite a bit in the past was software that leveraged a component of Microsoft Office (ie Word or Excel) as part of its functionality.  Most of these cases required a very specific, and often outdated, version of Office to function.  This would mean that users were unable to update Office on their computers, because it would break some other software.  To solve the, several enterprises leveraged Citrix to isolate applacation environments from one another.  
+
+The second factor in the 12 Factors talks about isolating dependencies.  Virtual Environments, or virtualenv, within Python provide a very easy and elegant way to accomplish this for Python applications.  You can have two different Python programs, running on the same host, leveraging completley different versions of a module.  
+
+A secondary benefit, but very important as well, is the ability to limit the modules added to a virtualenv to just those needed by the software.  If you were to use a single environment for every possible Python applciation you might run, you'll end up with hundreds of different packages installed.  And like anything in IT, that level of complexity will often lead to problems.  
+
 ### Experiments
 
+* Install virtualenv on your workstation using pip
+
+	```
+	pip install virtualenv 
+	```
+
+* Create a new folder for this experiement 
+
+	``` 
+	mkdir imapex101venvlab
+	cd imapex101venvlab
+	
+	```
+
+* Create a new virtualenv in this directory.  It will create a new folder called `venv` containing an independent copy of python as well as pip for module management 
+	
+	```
+	virtualenv venv 
+	
+	New python executable in /Users/hapresto/coding/imapex101/examples/imapex101venvlab/venv/bin/python
+	Installing setuptools, pip, wheel...done.
+	
+	```
+	
+* You need to activate the new virtualenv to use it
+
+	```
+	source venv/bin/activate 
+	
+	# this will change your prompt to indicate you are now in the environment
+	(venv) imapex101venvlab $
+	
+	# to return to your main/default environment
+	deactivate
+	
+	# And reenter 
+	source venv/bin/activate 
+	```
+
+* Check current module installation status
+
+	```
+	pip freeze 
+	
+	# Nothing should be returned
+	# Compare this to what we saw in the pip exercises 
+	
+	```
+
+* Install a module in the environment and verify status
+
+	```
+	pip install requests 
+	
+	Collecting requests
+	  Using cached requests-2.10.0-py2.py3-none-any.whl
+	Installing collected packages: requests
+	Successfully installed requests-2.10.0
+	
+	pip freeze 
+	
+	requests==2.10.0
+	
+	```
+
+* Create a requirements.txt file from the current status
+
+	```
+	pip freeze > requirements.txt 
+	
+	```
+
+* Update the requirements.txt file to add a new dependency 
+
+	```
+	echo "Flask==0.10.1" >> requirements.txt 
+	
+	# Verify the new file 
+	cat requirements.txt
+	
+	requests==2.10.0
+	Flask==0.10.1
+	```
+
+* Use pip to read in the requirements and verify the virtualenv meets all needed requirements.  
+
+	```
+	pip install -r requirements.txt
+	
+	Requirement already satisfied (use --upgrade to upgrade): requests==2.10.0 in ./venv/lib/python2.7/site-packages (from -r requirements.txt (line 1))
+	Collecting Flask==0.10.1 (from -r requirements.txt (line 2))
+	Collecting itsdangerous>=0.21 (from Flask==0.10.1->-r requirements.txt (line 2))
+	Collecting Werkzeug>=0.7 (from Flask==0.10.1->-r requirements.txt (line 2))
+	  Using cached Werkzeug-0.11.10-py2.py3-none-any.whl
+	Collecting Jinja2>=2.4 (from Flask==0.10.1->-r requirements.txt (line 2))
+	  Using cached Jinja2-2.8-py2.py3-none-any.whl
+	Collecting MarkupSafe (from Jinja2>=2.4->Flask==0.10.1->-r requirements.txt (line 2))
+	Installing collected packages: itsdangerous, Werkzeug, MarkupSafe, Jinja2, Flask
+	Successfully installed Flask-0.10.1 Jinja2-2.8 MarkupSafe-0.23 Werkzeug-0.11.10 itsdangerous-0.24 
+	```
+
+* Deactivate the virtualenv 
+
+	```
+	deactivate 
+	```
+	
 ### Links
+
+* [http://docs.python-guide.org/en/latest/dev/virtualenvs/](http://docs.python-guide.org/en/latest/dev/virtualenvs/)
+* [https://virtualenvwrapper.readthedocs.io/en/latest/](https://virtualenvwrapper.readthedocs.io/en/latest/)
 
 ### Why do we care
 
+In development today, it is not only good practice, but it's expected to provide software with dependency isolation.  If you're building a python application that will be downloaded and ran on a host, virtualenv for python is a standard way to do this.  
+
+However, more and more applciations are being packaged in containers (typically Docker containers) which provide a level of isolation even higher than a simple Virtual Environment.  You could create a Virtual Environment within a container, but if you are practicing good container strategy, that is likely not needed as part of final delivery.  
+
+Though, in the development phase, you may choose to use virtualenv to develop within to avoid the extra steps of rebuilding a new container for every update and test.
+
 ### Go do it Exercises 
 
-	
+This exercise will combine the pip and virtualenv skills together.  As well as give you something new to extend the virtualenv skills to research... 
+
+* Take a look at this sample django application on GitHub [kirpit/django-sample-app](https://github.com/kirpit/django-sample-app)
+* Review the README, this lab is about setting up this application within a virtual environment on your workstation 
+* Step 1 in the installation references a tool called **virtualenvwrapper**.  Check the link above that describes its value and install it with pip 
+* Run through the installation of the sample application and start the web server
+
