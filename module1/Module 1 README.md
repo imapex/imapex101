@@ -2,7 +2,7 @@
 
 # Module 1: General Development Skills
 
-* 12 Factor Concepts
+* [12 Factor Concepts](#12-factor-concepts)
   * Secret Management
 * Basic Linux Tools
   * curl
