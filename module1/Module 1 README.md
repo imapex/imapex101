@@ -126,6 +126,10 @@ Factor III: Config talks about NOT including environment details in your code, b
 
 # Basic Linux Tools
 
+> See, you not only have to be a good coder to create a system like Linux, you have to be a sneaky bastard too. -Linus Torvalds
+
+> Linux has never been about quality. There are so many parts of the system that are just these cheap little hacks, and it happens to run. -Theo de Raadt
+
 Some of the most difficult parts of developing are often less about coding, and more about operational tasks.  But sense the big theme in development these days is **Dev_Ops_** we can't get away from those tasks.  
 
 Scripting has long been the swiss army knife for operations, and it continues to be valuable today.  There are several common Linux utilities that having a basic fundamental knowledge of will help you greatly as you work to develop and package your applications for others to use.  
@@ -1035,6 +1039,48 @@ One of the nicest things about Vagrant, is the ability to embed the development 
 
 # Python Skills 
 
+The Zen of Python
+
+>Beautiful is better than ugly.
+>
+>Explicit is better than implicit.
+>
+>Simple is better than complex.
+>
+>Complex is better than complicated.
+>
+>Flat is better than nested.
+>
+>Sparse is better than dense.
+>
+>Readability counts.
+>
+>Special cases aren't special enough to break the rules.
+>
+>Although practicality beats purity.
+>
+>Errors should never pass silently.
+>
+>Unless explicitly silenced.
+>
+>In the face of ambiguity, refuse the temptation to guess.
+>
+>There should be one-- and preferably only one --obvious way to do it.
+>
+>Although that way may not be obvious at first unless you're Dutch.
+>
+>Now is better than never.
+>
+>Although never is often better than right now.
+>
+>If the implementation is hard to explain, it's a bad idea.
+>
+>If the implementation is easy to explain, it may be a good idea.
+>
+>Namespaces are one honking great idea -- let's do more of those!
+>
+>—Tim Peters
+
 ## pip
 
 Python uses pip to install and manage packages and optional modules.  Likely you've used it already, but here we're going to talk about how to use it and capture details for packaging into your application.  
@@ -1243,6 +1289,9 @@ This exercise will combine the pip and virtualenv skills together.  As well as g
 * Run through the installation of the sample application and start the web server
 
 # Writing Test Cases
+
+> “Testing is an infinite process of comparing the invisible to the ambiguous in order to avoid the unthinkable
+> happening to the anonymous.”— James Bach
 
 Whenever possible, any code that is going to be deployed as part of a CI/CD pipeline should include test cases. Ensuring
 that a project has a good testing suite provides the following benefits:
