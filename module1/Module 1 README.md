@@ -16,7 +16,7 @@
 * [Python Skills](#python-skills)
   * [pip and dependencies](#pip)
   * [Virtual Environments](#virtualenv)
-* [Writing and Using Test Cases](#writing-and-using-test-cases)
+* [Writing and Using Test Cases](#writing-test-cases)
 * [Linting](#linting)
 * Boiler Plate Application
   * README.md
