@@ -16,8 +16,8 @@
 * [Python Skills](#python-skills)
   * [pip and dependencies](#pip)
   * [Virtual Environments](#virtualenv)
-* Writing and Using Test Cases
-* Linting
+* [Writing and Using Test Cases](#writing-and-using-test-cases)
+* [Linting](#linting)
 * Boiler Plate Application
   * README.md
   * license
@@ -1315,7 +1315,7 @@ class HelperFunctionTests(unittest.TestCase):
 unittest.main()
 ```
 
-Which sould result in the following output
+Which should result in the following output
 
 ```
 ..
