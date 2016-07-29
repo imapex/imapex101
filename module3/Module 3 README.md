@@ -3,8 +3,7 @@
 # Module 3: Advanced Docker and Docker Hub
 
 * [Dockerfile Creation](#dockerfile-creation)
-* [Trusted Registries](#trusted-registries)
-* [Public vs Private](#public-vs-private) 
+* [Registry Considerations](#registry-considerations)
 * [Tags](#tags)
 * [Manual vs Auto-Build Repos](#manual-vs-auto-build-repos)
 
@@ -322,28 +321,83 @@ For this exercise, build a new Dockerfile that...
 * Uses an "alpine" image (you'll need to find out what that means) 
 * Runs [dbarnett/python-helloworld](https://github.com/dbarnett/python-helloworld) when started
 
-# Trusted Registries 
+# Registry Considerations
+
+With Docker, "registry" refers to a server that stores and hosts container images for centralized distribution.  [hub.docker.com](https://hub.docker.com) is the public, default registry for Docker images, but it is not the only option to be aware of.  
+
+When you run a `docker pull` and grab an image from hub.docker.com, you are putting your trust in whoever maintains the image you are downloading.  The "official images" *(those images referred to simply by a name like `docker pull debian` rather than with an org or user such as `docker pull acme\debian`)* go through some level of validation and security testing by the community, but the vast majority of images available on hub.docker.com should be carefully considered before being used.  
+
+Most enterprises will bring up "Trusted Registries" which is really just a fancy word for a private registry, installed and managed by the enterprise themself, where all images that are available have been vetted to be secure and stable.  
+
+There are several options for enterprises looking for a private registry solution.  Actually, there are several alternatives to hub.docker.com for public registies as well.  
+
+Some other companies that provide registries are
+
+* Docker 
+	* Public: [hub.docker.com](https://hub.docker.com)
+	* Enterprise Private: [Docker Trusted Registry](https://docs.docker.com/docker-trusted-registry/)
+	* Free Private: [registry](https://hub.docker.com/_/registry)
+* CoreOS
+	* Support for both Docker and their container technology rckt
+	* Public: [Quay](https://quay.io)
+	* Private: [Quay Enterprise](https://quay.io) 
+* Google Container Registry
+	* Public: [Google Container Registry](https://cloud.google.com/container-registry/)
+* Amazon EC2 Container Registry
+	* Public: [EC2 Container Registry](https://aws.amazon.com/ecr/)
+
+When leveraging a registry other than hub.docker.com, you must include it in all comands and container names.  For example, `docker pull quay.io/acme/demo:latest` would use the registry `quay.io`, and access the container `demo`, and tag `latest` from user `acme`.  
 
 ## Experiments 
 
+Let's see what it looks like to use a registry other than hub.docker.com.  We'll be using the image [quay.io/repository/hpreston/demo](https://quay.io/repository/hpreston/demo)
+
+* Pull down the image
+
+	``` 
+	docker pull quay.io/hpreston/demo:latest 
+	
+	docker images
+	REPOSITORY                      TAG                 IMAGE ID            CREATED             SIZE
+	quay.io/hpreston/demo           latest              afde9a78e299        58 minutes ago      371.3 MB
+	
+	```
+
+* Run a container based on the image 
+
+	```
+	docker run -d --name quaydemo quay.io/hpreston/demo:latest
+	
+	docker ps
+	CONTAINER ID        IMAGE                          COMMAND                  CREATED             STATUS              PORTS               NAMES
+	23a23fcb3d26        quay.io/hpreston/demo:latest   "/root/hello_world.sh"   3 seconds ago       Up 2 seconds        80/tcp              quaydemo
+	
+	docker logs quaydemo
+	
+	Hello World
+	Hello World
+	Hello World
+	Hello World
+	```
+
 ## Links 
+
+* [https://mesosphere.com/blog/2015/10/14/docker-registries-the-good-the-bad-the-ugly/](https://mesosphere.com/blog/2015/10/14/docker-registries-the-good-the-bad-the-ugly/)
+* [https://aws.amazon.com/ecr/](https://aws.amazon.com/ecr/)
+* [https://docs.docker.com/docker-trusted-registry/](https://docs.docker.com/docker-trusted-registry/)
+* [https://hub.docker.com/_/registry/](https://hub.docker.com/_/registry/)
+* [https://quay.io](https://quay.io)
+* [Google Container Registry](https://cloud.google.com/container-registry/)
 
 ## Why do we care 
 
-## Go Do it Exercises 
-
-
-# Public vs Private
-
-## Experiments 
-
-## Links 
-
-## Why do we care 
+Using the basic public registry from docker, or other public registries are fine for learning and experimentation.  But enterprises of any size, will be looking for options for trusted registries.  Understanding the options available, and how to work with them is important.  
 
 ## Go Do it Exercises 
 
-
+* Create a free account on Quay.io 
+* Create a public registry called demo and push up the sample Docker container created above.  
+* Hint... you'll need to work out how to login using the docker cli
 
 # Tags 
 
