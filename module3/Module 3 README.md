@@ -514,11 +514,27 @@ To really use Docker effectively, you must understand the concept of tagging.  N
 
 # Manual vs Auto-Build Repos
 
+So far, we've been building our images localling on our laptops, or downloading them from repositories.  This is great for testing and learning, but isn't practical for actual projects and applications.  The goal of DevOps, is to automate all the little things like building containers and pushing them to registries.  For our projects in imapex, there are two methods we'll look at for building and updating repos.  
+
+The simplest solution are Automated Build repos.  These are repositories that are created and linked to a source code repository such as GitHub.  They leverage WebHooks to be notified anytime there is an event like a code commit, branch update, or pull request.  When these events happen, the registry (ie Docker Hub) will clone the code and attempt to build a new image based on the Dockerfile.  As long as the build completes successfully, it will publish a new image to the repository.  This solution is easy to setup, and requires nothing outside of a GitHub and Docker Hub account, but lacks methods for testing or validation of the changed code in the repository.  
+
+The second option is to rely on some other mechanism to track code changes, build new images, and publish them to the registry.  These tasks, and more, are the purpose of a CICD tool.  CICD is covered in Module 4.  
+
 ## Experiments 
+
+* Walk through creating a GitHub repo for the dockerfile example in this module
+* Create an automated build repo on docker hub 
+* Update the code, commit and push to GitHub and watch what Docker does 
 
 ## Links 
 
+* [https://docs.docker.com/docker-hub/builds/](https://docs.docker.com/docker-hub/builds/)
+
 ## Why do we care 
 
+As we build our applications and demos, we'll need a way to easily make the updates and changes available for distribution.  Though we could manually build, and push from our laptops during development, these are manual steps that take time away from the actual coding.  Further... no one actually building applications works that manually.  We need to be operating like developers.  
+
 ## Go Do it Exercises 
+
+Automated builds are not just available for Docker Hub, Quay.io offers them as well.  Create an automated build on Quay.io for your GitHub project.  
 
