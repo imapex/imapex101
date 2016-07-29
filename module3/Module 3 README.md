@@ -401,13 +401,115 @@ Using the basic public registry from docker, or other public registries are fine
 
 # Tags 
 
+There is a heirarchy of objects within Docker that are worth having a solid understanding of. 
+
+* Registry 
+	* User/Org/Account
+		* Repository
+			* Tagged Image
+
+What we commonly think of as a Docker container would better be described as a _specificly **tagged image**, contained within a **repository**, managed by a **user or organization**, hosted on a particular **registry**_
+
+To be accurate, *container* is actually an instance of a tagged image that is running, or is currently stopped.  
+
+When getting started with Docker, it is easy, and perfectly fine to slip over the details, but if you are going to be actively building software to be distributed with containers, it's critical to understand the actualy objects.  
+
+Within a single Repository, tags are used to provide different versions of what is typically the same application or service.  Some common uses of the tags would be 
+
+* Actual version control
+	* It is common to see tags like **:v0.1**, **:v0.2**, **:v0.3**
+* Variations of the base image
+	* **python:2-alpine**, **python:2-wheezy**, **python:2-slim** 
+* Stages of Development
+	* **:dev**, **:prod**, **:qa**
+* Indications of Git Branches/Tags
+	* **:feature/test**, **:feature/ui**, **:master**
+
+The tag **:latest** is a well understood standard in Docker to indicate a "default" image.  If you do not specify a particular tag when building or pulling, latest will be assumed.  It is up to the owner of the repository to manage what image is provided by **:latest**, and in fact it is possible to have a repository lacking a **:latest** tag.  That is considered bad practice and should be avoided.  Also remember that **:latest** rarely actually indicates the most recently built container... 	
+
 ## Experiments 
+
+* Pull down the default (aka latest) python image
+
+	```
+	docker pull python
+	
+	Using default tag: latest
+	latest: Pulling from library/python
+	5c90d4a2d1a8: Pull complete
+	ab30c63719b1: Pull complete
+	c6072700a242: Pull complete
+	abb742d515b4: Pull complete
+	7663bd2e167e: Pull complete
+	d0f49e193c5a: Pull complete
+	28969a7d8e03: Pull complete
+	Digest: sha256:27cae89ba088e51a5c169f019ca6760d24a4e01c8453052631803a4785eda781
+	Status: Downloaded newer image for python:latest
+	
+	docker images
+	
+	REPOSITORY                      TAG                 IMAGE ID            CREATED             SIZE
+	python                          latest              9152ad50a7f9        9 days ago          694.3 MB
+	```
+
+* As expected, we pulled down `python:latest`.  It's a very large image, 694.3 MBs.  That's fine for playing around, but for an actual container deployment, that's laughably large.  Let's pull down a couple of other python images that are better for actual usage.  
+	* **:slim** is a tag on python that provides a "skinnied" down version of the image
+	* **:alpine** is an image based on alpine linux.  A specific distribution designed for compactness for use in containers. 
+
+	```
+	docker pull python:slim 
+	docker pull python:alpine 
+	
+	docker images
+	
+	REPOSITORY                      TAG                 IMAGE ID            CREATED             SIZE
+	python                          alpine              0298711f3095        9 days ago          73.04 MB
+	python                          slim                bdec2259b96a        9 days ago          221.3 MB
+	python                          latest              9152ad50a7f9        9 days ago          694.3 MB
+	
+	```
+	
+* Let's use our sample Dockerfile and create some new tagged images
+
+	```
+	docker build -t <your username>/imapex101_dockerfile:fun .
+	docker build -t <your username>/imapex101_dockerfile:in .
+	docker build -t <your username>/imapex101_dockerfile:the .
+	docker build -t <your username>/imapex101_dockerfile:sun .
+	
+	docker images 
+	
+	REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
+	<your username>/imapex101_dockerfile   fun                 b6578662ca26        34 minutes ago      371.3 MB
+	<your username>/imapex101_dockerfile   in                  b6578662ca26        34 minutes ago      371.3 MB
+	<your username>/imapex101_dockerfile   latest              b6578662ca26        34 minutes ago      371.3 MB
+	<your username>/imapex101_dockerfile   sun                 b6578662ca26        34 minutes ago      371.3 MB
+	<your username>/imapex101_dockerfile   the                 b6578662ca26        34 minutes ago      371.3 MB
+	
+	```
+
+	* Note how each of the tags, actually are the same IMAGE ID.  This is because Docker is smart enough to realize they are the exact same image, and being efficient, it just reuses the same underlying image.  
+	* Having the same image, with multiple tags is a common aspect of docker.  
 
 ## Links 
 
+* [https://medium.com/@mccode/the-misunderstood-docker-tag-latest-af3babfd6375#.2gilq1dnl](https://medium.com/@mccode/the-misunderstood-docker-tag-latest-af3babfd6375#.2gilq1dnl)
+* [http://www.carlboettiger.info/2014/08/29/docker-notes.html](http://www.carlboettiger.info/2014/08/29/docker-notes.html)
+
 ## Why do we care 
 
+To really use Docker effectively, you must understand the concept of tagging.  Not only to make sure you are consuming containers as you intend, but also so you can setup your own repositories appropriately and as consumers will expect.  
+
 ## Go Do it Exercises 
+
+* Look at some commonly used repositories and see how they leverage tags.  Some examples to check are
+	* MySQL
+	* CentOS
+	* Debian
+	* nginx
+	* Wordpress
+* Pull down CentOS images for version 6 and 7 and start containers based on each
+* Think about how you'll use tags with your demo applicaitons... be prepared to discuss and defend your ideas
 
 
 # Manual vs Auto-Build Repos
