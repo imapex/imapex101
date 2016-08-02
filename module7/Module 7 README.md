@@ -29,4 +29,4 @@
   * Nexus Switches
   * ISR Routers
   * CSP 2100
-  * IOx
+  * [IOx](IOx.md)
