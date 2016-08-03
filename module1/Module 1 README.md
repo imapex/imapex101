@@ -12,7 +12,7 @@
   * [sed](#sed)
 * Markdown
 * [Vagrant](#vagrant)
-* OpenSource Licenses
+* [OpenSource Licenses](#opensource-licenses)
 * [Python Skills](#python-skills)
   * [pip and dependencies](#pip)
   * [Virtual Environments](#virtualenv)
@@ -1032,6 +1032,123 @@ One of the nicest things about Vagrant, is the ability to embed the development 
 * Take a look at the [hpreston/myhero_data](https://github.com/hpreston/myhero_data) repo and read through the README section on development environments.  
 * Clone the repo locally and "vagrant up" the environment and try to interact with the microservice API.  
 * Review the Vagrantfile and Vagrantfile.host and see if you can follow how they work together to provide a Docker environment with Vagrant
+
+# OpenSource Licenses 
+
+## What is OpenSource 
+
+"Open source software is software with source code that anyone can inspect, modify, and enhance." [OpenSource.com](https://opensource.com/resources/what-open-source) 
+
+#### Is OpenSource "Free"?
+
+No... sorta... not really... 
+
+OpenSource licenses often require the software be free to distribute, but there is typically no limitation on charging for Support, Installation, Troubleshooting, etc.  ie RedHat's Model 
+
+Also, developing OpenSource software is no simpler than developing proprietary software.  Some projects are done as side projects, but many are done by paid programmers.  
+
+#### Why do people like OpenSource? 
+
+Lots of reasons... many cite
+
+* Control
+* Training
+* Security
+* Stability 
+
+#### Is OpenSource inherintly better, more stable, more secure?  
+
+Nope... remember [Heartbleed](https://en.wikipedia.org/wiki/Heartbleed)
+
+### Considerations for Choosing One
+
+Any software product has a "license" that is attached.  We see and agree to these licenses all the time, but we've become so accustomed to "Click to accept" that we don't even realize it.  
+
+With OpenSource Projects, you could write your own license that said whatever you wanted, but that's kinda boring.  So there are several available options that are often used.  
+
+Licenses will typically address the following characteristics. And their treatment of each often determines what license makes sense for a project.  
+
+#### Permissions
+What are you allowed to do... 
+
+* **Use - Commercial vs Private**
+	* Can you use the software to make money
+* **Distribution**
+	* Are you allowed to freely distribute the software
+* **Modification**
+	* Are you allowed to change the software
+* **Patent Use**
+	* Can you use the software as part of a patent
+
+#### Conditions
+What must you do... 
+
+* **OpenSource** 
+	* Actually provide the source code 
+* **License and Copyright Notificaitons** 
+	* Clearly indicate that you are using the licensed products 
+* **Copyleft**
+	* Whether other products, products must use the same license 
+* **State Changes**
+	* Explicitly state all changes  
+
+#### Limiations
+Protections and other footnotes
+
+* **Liability**
+	* Whether the creator can be held liable for damages
+* **Trademark Use**
+	* Usage related to trademarking. 
+
+
+
+## Some Common Licenses 
+
+### MIT license
+A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.
+
+[MIT License](http://choosealicense.com/licenses/mit/)
+
+### GNU General Public License (GPL)
+Permissions of this strong copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights.
+
+[GNU GPL License](http://choosealicense.com/licenses/gpl-3.0/)
+
+### GNU Library or "Lesser" General Public License (LGPL)
+Permissions of this copyleft license are conditioned on making available complete source code of licensed works and modifications under the same license or the GNU GPLv3. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights. However, a larger work using the licensed work through interfaces provided by the licensed work may be distributed under different terms and without source code for the larger work.
+
+[GNU LGPL License](http://choosealicense.com/licenses/lgpl-3.0/)
+
+### Apache License 2.0
+A permissive license whose main conditions require preservation of copyright and license notices. Contributors provide an express grant of patent rights. Licensed works, modifications, and larger works may be distributed under different terms and without source code.
+
+[Apache License](http://choosealicense.com/licenses/apache-2.0/)
+
+
+## Links (and sources)
+
+* [https://opensource.com/resources/what-open-source](https://opensource.com/resources/what-open-source)
+* [https://en.m.wikipedia.org/wiki/Comparison_of_free_and_open-source_software_licenses](https://en.m.wikipedia.org/wiki/Comparison_of_free_and_open-source_software_licenses)
+* [http://choosealicense.com/licenses/](http://choosealicense.com/licenses/)
+* [https://opensource.com/education/12/7/clearing-open-source-misconceptions](https://opensource.com/education/12/7/clearing-open-source-misconceptions)
+
+## Why Do We Care? 
+
+OpenSource has always been popular, but its popularity is raising at a very fast level.  We are seeing large enterprises, across verticles, embracing OpenSource Software like never before.  And this is in some very critical areas where traditionally they would have selected a more traditional commercial vendor.  Even commercial software vendors, traditionally very anti-OpenSource, are starting to embrace OpenSource in a big way.  This could be as a user, contributor, or initiator of projects.  
+
+Not all OpenSource projects and licenses are the same though, and as you jump into this world as an individual, you need to be able to differentiate between the different licenses that you'll run into so you can make apprporiate decisions about which projects to use and contribute to.  Also, deciding on an appropriate license for your own projects is an important decision that can have significant consequenses.  
+
+## Go Do It Exercises 
+
+Look at some popular OpenSource projects and find the license that they are published under.  Here are some ideas, but feel free to look elsewhere.  
+
+* Ubuntu
+* Apache
+* HA-Proxy
+* Cisco Mantl
+* Terraform
+* Vagrant
+* Cisco Contiv
 
 # Python Skills 
 
