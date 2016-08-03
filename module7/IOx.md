@@ -121,12 +121,12 @@ As you can see there is nothing special about the Python code - it is no differe
 
 Full copies of the example project files:
 
-[python-c-app.py](python-c-app.py)  
-[Makefile](Makefile)  
-[app-lxc.yaml](app-lxc.yaml)  
-[app-vm.yaml](app-vm.yaml)  
-[iox-project-lxc.conf](iox-project-lxc.conf)  
-[iox-project-vm.conf](iox-project-vm.conf)  
+[python-c-app.py](iox/python-c-app.py)  
+[Makefile](iox/Makefile)  
+[app-lxc.yaml](iox/app-lxc.yaml)  
+[app-vm.yaml](iox/app-vm.yaml)  
+[iox-project-lxc.conf](iox/iox-project-lxc.conf)  
+[iox-project-vm.conf](iox/iox-project-vm.conf)  
 
 ## Tips
 
