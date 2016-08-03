@@ -22,7 +22,7 @@
   * _AMP_
   * _ASA_
 * General
-  * PSIRT
+  * [PSIRT](PSIRT.md)
   * Contracts
   * TAC
 * Running Containers and Apps on Cisco Infra
