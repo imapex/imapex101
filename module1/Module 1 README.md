@@ -16,8 +16,8 @@
 * [Python Skills](#python-skills)
   * [pip and dependencies](#pip)
   * [Virtual Environments](#virtualenv)
-* Writing and Using Test Cases
-* Linting
+* [Writing and Using Test Cases](#writing-test-cases)
+* [Linting](#linting)
 * Boiler Plate Application
   * README.md
   * license
@@ -125,6 +125,10 @@ Factor III: Config talks about NOT including environment details in your code, b
 * [http://www.thepathtoagility.com/wp-content/uploads/2012/03/steveriley2.pdf](http://www.thepathtoagility.com/wp-content/uploads/2012/03/steveriley2.pdf)
 
 # Basic Linux Tools
+
+> See, you not only have to be a good coder to create a system like Linux, you have to be a sneaky bastard too. -Linus Torvalds
+
+> Linux has never been about quality. There are so many parts of the system that are just these cheap little hacks, and it happens to run. -Theo de Raadt
 
 Some of the most difficult parts of developing are often less about coding, and more about operational tasks.  But sense the big theme in development these days is **Dev_Ops_** we can't get away from those tasks.  
 
@@ -1152,6 +1156,48 @@ Look at some popular OpenSource projects and find the license that they are publ
 
 # Python Skills 
 
+The Zen of Python
+
+>Beautiful is better than ugly.
+>
+>Explicit is better than implicit.
+>
+>Simple is better than complex.
+>
+>Complex is better than complicated.
+>
+>Flat is better than nested.
+>
+>Sparse is better than dense.
+>
+>Readability counts.
+>
+>Special cases aren't special enough to break the rules.
+>
+>Although practicality beats purity.
+>
+>Errors should never pass silently.
+>
+>Unless explicitly silenced.
+>
+>In the face of ambiguity, refuse the temptation to guess.
+>
+>There should be one-- and preferably only one --obvious way to do it.
+>
+>Although that way may not be obvious at first unless you're Dutch.
+>
+>Now is better than never.
+>
+>Although never is often better than right now.
+>
+>If the implementation is hard to explain, it's a bad idea.
+>
+>If the implementation is easy to explain, it may be a good idea.
+>
+>Namespaces are one honking great idea -- let's do more of those!
+>
+>—Tim Peters
+
 ## pip
 
 Python uses pip to install and manage packages and optional modules.  Likely you've used it already, but here we're going to talk about how to use it and capture details for packaging into your application.  
@@ -1337,7 +1383,6 @@ A secondary benefit, but very important as well, is the ability to limit the mod
 	```
 	deactivate 
 	```
-	
 ### Links
 
 * [http://docs.python-guide.org/en/latest/dev/virtualenvs/](http://docs.python-guide.org/en/latest/dev/virtualenvs/)
@@ -1360,3 +1405,214 @@ This exercise will combine the pip and virtualenv skills together.  As well as g
 * Step 1 in the installation references a tool called **virtualenvwrapper**.  Check the link above that describes its value and install it with pip 
 * Run through the installation of the sample application and start the web server
 
+# Writing Test Cases
+
+> “Testing is an infinite process of comparing the invisible to the ambiguous in order to avoid the unthinkable
+> happening to the anonymous.”— James Bach
+
+Whenever possible, any code that is going to be deployed as part of a CI/CD pipeline should include test cases. Ensuring
+that a project has a good testing suite provides the following benefits:
+
+* Requires less background knowledge for other developers to contribute
+* Reduces failed deployments
+* Makes code refactoring easier
+* Helps identify where additional validation logic is required
+
+Software testing has become so important that it is now evolving in Agile shops to the notion of test driven development,
+which is to say, we will write our software tests before the code they will test is actually written.
+
+While critically important, testing is very much an art vs a science, which forces you to think about your code differently
+when writing code, you are primarily focused on how it will work.  Tests on the other hand, can force you to think about
+how it can break, and therefore with testing as a top of mind, you can incorporate those thoughts into the coding cycle
+and produce a more robust feature.
+
+## Enough with the talk, let's write some code.
+
+Let's assume we are working on a project that defines the following helper function
+
+
+```
+
+def doubler(n):
+    """
+    A simple doubler function
+    :param n: int
+    :return: int
+    """
+    return 2 * n
+
+```
+
+What do we know about the code, in the case of *doubler()* we know from the code that it takes an integer as an input
+and returns an integer equal to two times the input. Great.. so what? In this simple example, not much can go wrong, but
+we should test to document what the use case was for using after all what about the following usages?
+
+```
+print doubler(2)
+print doubler('2')
+
+```
+
+As we've written these functions, we've made some assumptions about how they will be used, and by whom, but we also should
+document those assumptions in the form of a test case(s).. We know we want to test a couple things.
+
+* The function works - 2 x 2 = 4 and 4 x 2 = 8
+* The function should receive an integer
+* The function should return an integer
+
+So let's get started. Python unittests is a common library used for testing, and the easiest to get started with.
+
+```
+import unittest
+
+class HelperFunctionTests(unittest.TestCase):
+    def test_001_valid_type_is_returned(self):
+        print "Executing test {}".format(self)
+        test = doubler(2)
+        self.assertIsInstance(test, int)
+
+
+    def test_002_double_4(self):
+        print "Executing test {}".format(self)
+        test = doubler(4)
+        self.assertEqual(test, 8)
+
+
+unittest.main()
+```
+
+Which should result in the following output
+
+```
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+Executing test test_001_valid_type_is_returned (__main__.HelperFunctionTests)
+Executing test test_002_double_4 (__main__.HelperFunctionTests)
+
+OK
+```
+
+### Quick Tips
+* All test methods must start with test* or they will not be executed
+* Tests must work isolated from one another
+* Tests are executed in order by their name using pythons built-in ordering for strings
+
+
+So we've accounted for all of the appropriate uses of our functions, but what happens if we start to think about how
+it could break?  As we noted earlier, doubler('2') may or may not be very helpful, so let's try a test-driven development
+approach assuming we wanted to add input validation to the doubler function and throw an exception if we don't receive
+an integer
+
+
+```
+import unittest
+
+class HelperFunctionTests(unittest.TestCase):
+    def test_001_valid_type_is_returned(self):
+        test = doubler(2)
+        self.assertIsInstance(test, int)
+
+
+    def test_002_double_4(self):
+        test = doubler(4)
+        self.assertEqual(test, 8)
+
+    def test_003_invalid_type_raises_error(self):
+        with self.assertRaises(TypeError):
+            test = doubler('2')
+
+unittest.main()
+
+```
+
+This time around executing our code we get the following:
+
+```
+..F
+======================================================================
+FAIL: test_003_invalid_type_raises_error (__main__.HelperFunctionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/kecorbin/Library/Preferences/PyCharm50/scratches/scratch_1", line 41, in test_003_invalid_type_raises_error
+    test = doubler('2')
+AssertionError: TypeError not raised
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+FAILED (failures=1)
+```
+
+So we've verified the condition we are attempting to correct though the use of a test case, now let's modify our function
+and add some input validation
+
+```
+def doubler(n):
+    """
+    A slightly more robust doubler function
+    :param n: int
+    :return: int
+    """
+    if isinstance(n, int):
+        return 2 * n
+    else:
+        raise TypeError('n must be of type integer')
+
+```
+
+And with our more robust helper function in place, we'll test the code again.
+
+```
+...
+----------------------------------------------------------------------
+
+Ran 3 tests in 0.000s
+
+OK
+
+```
+
+By leveraging a test-driven development approach, we've verified that we've successfully implemented the enhancement that
+we intended to, and best of all once the code is done, we don't have to worry about writing tests!!!
+
+
+
+
+
+
+# Linting
+
+> At the end of the day, ship the fucking thing! It’s great to rewrite your code and make it cleaner and by the
+> third time it’ll actually be pretty. But that’s not the point—you’re not here to write code;
+> you’re here to ship products. - Jamie Zawinsky
+
+Linting refers to a static code analysis for issues with the code, largely related to coding style, but also issues that may cause bugs to manifest down the road.  
+
+The python community provides guidance on coding convention and style through [PEP](https://www.python.org/dev/peps/pep-0008/). Linters are a good way of verifying that the code you have written conforms to PEP.  A simple example of a linter for python is [flake8](http://flake8.pycqa.org/en/latest/) which is available via pypi
+
+     pip install flake8 
+     
+ Once installed linting your code is as easy as typing 
+ 
+     flake8 mycode.py
+    
+ Or for a larger project, you can simply run flake8 from the root of your project. 
+
+### What are you waiting for, Give it a try on some of your code!!!!!
+
+### Tips:
+* Sometimes you may choose to ignore certain errors that flake8 will throw, [here](http://flake8.pycqa.org/en/latest/user/ignoring-errors.html) is a good resource on ignoring them. Cliffs note version, end a line w/ 
+   
+	```# flake8: noqa```
+* You can also version control the configuration for flake8 by adding a .flake8 file to the root of your project, here's a sample
+
+```
+[flake8]
+ignore = D203
+exclude = .git,__pycache__,docs/source/conf.py,old,build,dist
+max-complexity = 10
+```
+
+   
+ 
