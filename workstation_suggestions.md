@@ -7,7 +7,7 @@ Modern developers expect some freedom in their laptop/desktop setups.  What Oper
 So that means, outside of some corporate policy, there is no _right_ way to work.  However, if you are new to being a _developer_ you might feel overwhelmed and not sure where to start.  Here we will compile a list of some suggestions and lessons learned...
 
 * [Operating Systems](#operating-systems)
-	* [Mac OS X](#mac-os-x)
+	* [MacOS](#mac-os)
 	* [Linux](#linux)
 	* [Windows](#windows)
 * [Must-Have Utilities](#must-have-utilities)
@@ -28,8 +28,8 @@ You certainly don't everything on this list to get started, or even eventually. 
 ---
 # Operating Systems
 
-## Mac OS X
-Apple Mac OS X is a great platform used by many developers, both new and seasoned.  It balances the line between a commercial OS built for usability, but also has the Linux underpinnings helpful for developers.  
+## MacOS
+Apple MacOS is a great platform used by many developers, both new and seasoned.  It balances the line between a commercial OS built for usability, but also has the Linux underpinnings helpful for developers.  
 
 ## Linux
 Linux is a great platform for development, with many open source and some commercial software packages available.  Though quickly changing, it isn't as polished and immediately user friendly like Mac OS X and Windows.  
@@ -59,7 +59,7 @@ Windows can be a great platform for developers working in traditional Microsoft 
 
 * [AWS CLI][]
 * OpenStack CLI - unlike many of these other tools, this is best installed via your
-Linux distribution, a git clone of the repo, or [brew][] (on Macintosh), not by downloading a package from
+Linux distribution, a git clone of the repo, or [brew][] (on MacOS), not by downloading a package from
 the OpenStack.org website.
 
 ## IDEs and Editors
@@ -71,10 +71,13 @@ the OpenStack.org website.
 * [Eclipse][]
 * [BBEdit][]/[TextWrangler][]
 * [MacDown][]
+* [Visual Studio Code][]
 
 ## Other
 
 * [Drone CLI][]
+* [brew][] - Mac specific. Used to install tools traditionally used in Linux
+onto MacOS without creating conflicts with Apple provided tools.
 
 
 [git]:https://git-scm.com
@@ -93,6 +96,7 @@ the OpenStack.org website.
 [TextWrangler]:http://www.barebones.com/products/textwrangler/
 [Drone CLI]:https://github.com/drone/drone
 [MacDown]:http://macdown.uranusjr.com
+[Visual Studio Code]:https://code.visualstudio.com
 
 ---
 # Services and Accounts
