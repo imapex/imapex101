@@ -48,9 +48,11 @@ others have committed.
 
 In it's simplest form, you can executre the stash/unstash workflow with the following commands
 
-   git stash
+```
+git stash
 
-   git stash apply
+git stash apply
+```
 
 *NOTE* One important thing to remember is that git stash will not save files in the working directory unless they have been
 added to the index (git add)
@@ -73,7 +75,7 @@ A good README file is important for outlining the motivation behind a particular
 as providing the reader with an overview of how to effectively utilize the project repository.
 
 
-[http://stackoverflow.com/questions/2304863/how-to-write-a-good-readme]
+[http://stackoverflow.com/questions/2304863/how-to-write-a-good-readme](http://stackoverflow.com/questions/2304863/how-to-write-a-good-readme)
 
 
 * ASCII characters only, if the README is written in English
@@ -101,7 +103,6 @@ TODO
 * Forking and Syncing
 * Managing Multiple Development Environments
 
-
 Lab Exercise
 =============================
 
@@ -117,34 +118,97 @@ file. As you are now going to be contributing to the project - this is obviously
 
 3. Create a fork of the imapex/101-github-lab repository
 
+	```
    git clone https://github.com/imapex/101-github-lab
+   ```
 
 4. Create a new branch for your enhancement
 
+	```
    git branch -m adding-email-addr
+   ```
 
-*NOTE* If your branch is going to exist for a longer period of time why you are developing your feature you could add
-the upstream repo as a remote for your repository as well.
+	* **_NOTE_ If your branch is going to exist for a longer period of time why you are developing your feature you could add the upstream repo as a remote for your repository as well.**
 
+		```
+	   git remote add --track master upstream git://github.com/upstreamname/projectname.git
+	   ```
 
-   git remote add --track master upstream git://github.com/upstreamname/projectname.git
+	* Now you can get updates from the main project as well by using:
 
-Now you can get updates from the main project as well by using:
-
-   git fetch upstream
-   git merge upstream/master
+		```
+	   git fetch upstream
+	   git merge upstream/master
+	   ```
 
 5. Make the appropriate changes to add your email address to the CONTRIBUTORS.txt file.
 
 6. Commit your changes, be sure to indicate the issue number that you are working on in your commit message
 
+	```
    git commit -m "added email address - closes #XXX"
+   ```
 
 5. From your web browser, go to the github page of your fork, and open a pull request.
 
 6. Navigate to the upstream repository [IMAPEX/101-github-lab](https://github.com/imapex/101-github-lab) and
 verify that the pull request was issued.  From here discussion can occur on the proposed changes, and the owner
-of the repository can merge the changes in once completed.  *Note* An opened PR is often a trigger for a something to
-happen in the build pipeline, such as automated testing of the proposed changes.
+of the repository can merge the changes in once completed.  
+	* **_Note_ An opened PR is often a trigger for a something to
+happen in the build pipeline, such as automated testing of the proposed changes.**
 
+
+# Helpful Git CLI Workflows 
+
+Here are some example git command structures for some common actions.  
+
+* Create new branch and push to remote
+
+	```
+	git checkout -b BRANCH
+	git push -u origin BRANCH
+	```
+
+* Pull down branch that is on remote repo locally
+
+	```
+	# view remote branched
+	git branch -v -a
+	
+	# fetch all remote branches
+	git fetch origin
+	
+	# create local branch and start working
+	git checkout -b BRANCH origin/BRANCH
+	```
+	
+* Sync your fork with master
+
+	```
+	# Link your local fork repo to the upstream and verify 
+	git remote add upstream <https://github.com..>
+	git remote -v
+
+	# Pull your fork
+	git pull
+
+	# Pull upstream
+	git pull upstream master
+
+	# Push to your fork
+	git push origin master
+	```
+
+* Merge Master (or another branch into a branch)
+
+	```
+	# Switch to destination
+	git checkout master
+
+	# Merge
+	git merge <branch>
+
+	# Push changes
+	git push
+	```
 
