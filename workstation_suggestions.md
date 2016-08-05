@@ -1,10 +1,10 @@
 [Class Contents](README.md)
 
-# Personal Workstation Suggestions 
+# Personal Workstation Suggestions
 
 Modern developers expect some freedom in their laptop/desktop setups.  What Operating System, Editors, GUI/CLI, etc are all choices a developer can make across a number of free and commercial tools today.  As long as the created product meets the needs of the overall project, and can be distributed adequately, the details of how the developer worked is less relevant.  
 
-So that means, outside of some corporate policy, there is no _right_ way to work.  However, if you are new to being a _developer_ you might feel overwhelmed and not sure where to start.  Here we will compile a list of some suggestions and lessons learned... 
+So that means, outside of some corporate policy, there is no _right_ way to work.  However, if you are new to being a _developer_ you might feel overwhelmed and not sure where to start.  Here we will compile a list of some suggestions and lessons learned...
 
 * [Operating Systems](#operating-systems)
 	* [Mac OS X](#mac-os-x)
@@ -26,52 +26,73 @@ So that means, outside of some corporate policy, there is no _right_ way to work
 You certainly don't everything on this list to get started, or even eventually.  This list is simply provided as a starting point when trying to decide where to start with a particular need you might run into.  
 
 ---
-# Operating Systems 
+# Operating Systems
 
-## Mac OS X 
+## Mac OS X
 Apple Mac OS X is a great platform used by many developers, both new and seasoned.  It balances the line between a commercial OS built for usability, but also has the Linux underpinnings helpful for developers.  
 
 ## Linux
-Linux is a great platform for development, with many open source and some commericial software packages available.  Though quickly changing, it isn't as polished and immediately user friendly like Mac OS X and Windows.  
+Linux is a great platform for development, with many open source and some commercial software packages available.  Though quickly changing, it isn't as polished and immediately user friendly like Mac OS X and Windows.  
 
 ## Windows
-Windows can be a great platform for developers working in traditional Microsoft platforms like .NET.  However for developers developing for more Linux heavy platforms, Windows can be a challenge.  There has been a great deal of work by Microsoft to make it more univerally developer friendly, but be cautious of potential problems if you choose to use Windows as your platform.  
+Windows can be a great platform for developers working in traditional Microsoft platforms like .NET.  However for developers developing for more Linux heavy platforms, Windows can be a challenge.  There has been a great deal of work by Microsoft to make it more universally developer friendly, but be cautious of potential problems if you choose to use Windows as your platform.  
 
 ---
-# Must-Have Utilities 
+# Must-Have Utilities
 
 ## Source Control
 
-* git
+* [git][]
 
-## Working Environment 
+## Working Environment
 
-* Vagrant
-* Docker
-* VirtualBox
+* [Vagrant][]
+* [Docker][]
+* [VirtualBox][]
 
-## Configuraiton Management 
+## Configuration Management
 
-* Ansible
-* Terraform
+* [Ansible][]
+* [Terraform][]
 
-## IaaS Tools 
+## IaaS Tools
 
-* AWS CLI
-* OpenStack CLI
+* [AWS CLI][]
+* OpenStack CLI - unlike many of these other tools, this is best installed via your
+Linux distribution, a git clone of the repo, or [brew][] (on Macintosh), not by downloading a package from
+the OpenStack.org website.
 
 ## IDEs and Editors
 
-* Atom 
-* JetBrains Tools 
-	* PyCharm
-	* WebStorm
-* Eclipse
-* BBEdit/TextWrangler
+* [Atom][]
+* JetBrains Tools
+	* [PyCharm][]
+	* [WebStorm][]
+* [Eclipse][]
+* [BBEdit][]/[TextWrangler][]
+* [MacDown][]
 
 ## Other
 
-* Drone CLI
+* [Drone CLI][]
+
+
+[git]:https://git-scm.com
+[Vagrant]:https://www.vagrantup.com
+[Docker]:https://www.docker.com
+[VirtualBox]:https://www.virtualbox.org
+[Ansible]:https://www.ansible.com
+[Terraform]:https://www.terraform.io
+[AWS CLI]:https://aws.amazon.com/cli/?nc2=h_m1
+[brew]:http://brew.sh
+[Atom]:http://atom.io
+[PyCharm]:https://www.jetbrains.com/pycharm/
+[WebStorm]:https://www.jetbrains.com/webstorm/
+[Eclipse]:http://www.eclipse.org/downloads/
+[BBEdit]:http://www.barebones.com/products/bbedit/index.html
+[TextWrangler]:http://www.barebones.com/products/textwrangler/
+[Drone CLI]:https://github.com/drone/drone
+[MacDown]:http://macdown.uranusjr.com
 
 ---
 # Services and Accounts
@@ -79,7 +100,7 @@ Windows can be a great platform for developers working in traditional Microsoft 
 ## IaaS and PaaS Platforms
 
 * OpenStack
-* AWS 
+* AWS
 * Mantl
 * Shipped
 
