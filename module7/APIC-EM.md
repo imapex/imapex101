@@ -42,3 +42,43 @@ response = requests.post(url,data=json.dumps(payload), headers=header, verify=Fa
 print(response.text)
 ~~~
 
+Once you have a token you can then make requests for data out of APIC. In the following example we will generate our token and hten request the software version running on all devices in inventory.
+
+~~~
+__author__ = 'Administrator'
+
+import requests,json
+import re
+
+### Disable invalid certificate warnings.
+requests.packages.urllib3.disable_warnings()
+
+def createserviceticket():
+    response = requests.post(
+        url="https://198.18.129.100/api/v1/ticket",
+        headers={
+            "Content-Type": "application/json",
+        },
+        verify=False,
+        data=json.dumps({
+            "username": 'admin',
+            "password": 'C1sco12345'
+        })
+    )
+    output = ('Response HTTP Response Body: {content}'.format(content=response.content))
+    match_service_ticket = re.search('serviceTicket":"(.*cas)', output, flags=0)
+    service_ticket = match_service_ticket.group(1)
+    return service_ticket
+
+url = "https://198.18.129.100/api/v1/network-device"
+
+response = requests.get(url,headers={"X-Auth-Token": createserviceticket(),"Content-Type": "application/json",},verify=False)
+
+data = response.json()
+
+device_list = data['response']
+for device in device_list:
+    print 'Hostname: %s' % device['hostname']
+    print '     Software Version: %s '% device['softwareVersion']
+
+~~~
