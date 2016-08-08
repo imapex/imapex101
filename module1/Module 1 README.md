@@ -130,7 +130,7 @@ Factor III: Config talks about NOT including environment details in your code, b
 
 > Linux has never been about quality. There are so many parts of the system that are just these cheap little hacks, and it happens to run. -Theo de Raadt
 
-Some of the most difficult parts of developing are often less about coding, and more about operational tasks.  But sense the big theme in development these days is **Dev_Ops_** we can't get away from those tasks.  
+Some of the most difficult parts of developing are often less about coding, and more about operational tasks.  But sense the big theme in development these days is **Dev"Ops"** we can't get away from those tasks.  
 
 Scripting has long been the swiss army knife for operations, and it continues to be valuable today.  There are several common Linux utilities that having a basic fundamental knowledge of will help you greatly as you work to develop and package your applications for others to use.  
 
@@ -204,14 +204,18 @@ curl is a general purpose command line utility for making requests to web server
 	* OAUTH2 is a common mechanism used for authentication, and is used by Cisco Spark.  It leverages a Request Header called **Authorization** with a value of _Bearer \<TOKEN\>_
 
 	```
-	curl -H "Authorization: Bearer $SPARK_TOKEN" https://api.ciscospark.com/v1/teams	
+	curl -H "Authorization: Bearer $SPARK_TOKEN" \
+		https://api.ciscospark.com/v1/teams	
 	
 	{"items":[{"id":"...","name":"MidW/A imapex","created":"2016-06-29T13:29:05.416Z"}]}
 	```
 * curl will simply write out the data as returned by the server, and it isn't always in a handy format, particularly when returned as raw JSON.  You can "pipe" JSON data to an included python module to make it more readable.  
 
 	```
-	curl -H "Authorization: Bearer $SPARK_TOKEN" https://api.ciscospark.com/v1/teams | python -m json.tool
+	curl -H "Authorization: Bearer $SPARK_TOKEN" \
+		https://api.ciscospark.com/v1/teams \
+		| python -m json.tool
+		
 	  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
 	                                 Dload  Upload   Total   Spent    Left  Speed
 	100   904  100   904    0     0    428      0  0:00:02  0:00:02 --:--:--   428
@@ -235,7 +239,8 @@ curl is a general purpose command line utility for making requests to web server
 	* _You can use `-o /dev/null` as a shortcut to drop any returned data if only interested in headers or testing_
 
 	```
-	curl -H "Authorization: Bearer $SPARK_TOKEN" https://api.ciscospark.com/v1/teams -o teams.json
+	curl -H "Authorization: Bearer $SPARK_TOKEN" \
+		https://api.ciscospark.com/v1/teams -o teams.json
 	
 	ls -l 	
 	-rw-r--r--  1 user123  staff  904 Jul 26 15:49 teams.json
@@ -245,7 +250,9 @@ curl is a general purpose command line utility for making requests to web server
 * If you want to capture the Headers to a file, use the `-D <file>` argument. 
 
 	```
-	curl -H "Authorization: Bearer $SPARK_TOKEN" https://api.ciscospark.com/v1/teams -D headers.txt
+	curl -H "Authorization: Bearer $SPARK_TOKEN" \
+		https://api.ciscospark.com/v1/teams \
+		-D headers.txt
 	
 	ls -l
 	total 16
@@ -255,7 +262,8 @@ curl is a general purpose command line utility for making requests to web server
 * By default curl sends an HTTP **GET** method.  To send other methods, use the `-X` option.  
 
 	```
-	curl -X POST -H "Authorization: Bearer $SPARK_TOKEN" https://api.ciscospark.com/v1/messages 
+	curl -X POST -H "Authorization: Bearer $SPARK_TOKEN" \
+		https://api.ciscospark.com/v1/messages 
 	
 	{"message":"Required request body is missing","errors":[{"description":"Required request body is missing"}],"trackingId":"NA_c4d9d517-3617-4b6a-a521-dc2a26334dd6"}
 	
@@ -267,7 +275,10 @@ curl is a general purpose command line utility for making requests to web server
 
 	```	
 	# When sending JSON data, you need to escape inner quotes
-	curl -X POST -H "Authorization: Bearer $SPARK_TOKEN" -H "Content-type: application/json" https://api.ciscospark.com/v1/messages -d "{\"toPersonEmail\": \"$PARTNER_EMAIL\",\"text\": \"Test message from lab\"}"
+	curl -X POST -H "Authorization: Bearer $SPARK_TOKEN" \
+		-H "Content-type: application/json" \
+		https://api.ciscospark.com/v1/messages \
+		-d "{\"toPersonEmail\": \"$PARTNER_EMAIL\",\"text\": \"Test message from lab\"}"
 	
 	{"id":"...","roomId":"...","toPersonEmail":"...","roomType":"direct","text":"Test message from lab","personId":"...","personEmail":"...","created":"2016-07-26T21:05:00.330Z"}
 	
