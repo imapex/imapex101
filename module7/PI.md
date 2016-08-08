@@ -22,7 +22,7 @@ An example of what can be done in PI would be to pull a list of devices in PI's 
 
 *curl -k "https://user:passwd@PI-server/webacs/api/v1/data/Devices"*  
 This call results in a list of devices, but the only unique identifier is their "entity id"  
-![alt txt](http://10.91.13.171/Files/PI-Device-List.PNG)
+![alt txt](images/PI-Device-List.PNG)
 
 It is possible to pull more detailed information about these devices by expanding on the request:  
 *curl -k "https://user:passwd@PI-Server/webacs/api/v1/data/Devices?.full=true"*  
@@ -36,4 +36,4 @@ So this introduces some of the additional power in PI's APIs: *Sorting, Filterin
 If we wanted to request a list from the PI server for the total number of ISR4331s in its database, then we could use: *curl -k "https://user:passwd@PI-Server/webacs/api/v1/data/Devices?.full=true&.sort=ipAddress&deviceType=contains(\"4331\")"*  
 
 Part of the results:  
-![alt-txt](http://10.91.13.171/Files/PI-REST-Sorting&Filtering.PNG)  
+![alt-txt](images/PI-REST-Sorting&Filtering.PNG)  

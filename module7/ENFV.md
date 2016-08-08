@@ -17,14 +17,14 @@ Key uses of the NFVIS API includes:
 
 ## Sample REST Calls in NFVIS
 
-A full list of available API's for NFVIS can be found at [this HTTP Server](http://10.91.13.171/Files/nfvis-user-guide_May-6-early-draft.pdf)
+A full list of available API's for NFVIS can be found at [here](files/nfvis-user-guide_May-6-early-draft.pdf)
 
 An example of what can be done in NFVIS would be to pull a list of VM's deployed on NFVIS:
 
 *curl -k "https://user:passwd@NFVIS-server/api/config/esc_datamodel/tenants/tenant/admin/deployments?deep"*  
 This call results in a list of VM's deployed on the platform including the profile of the device and its configuration.
-![alt txt](http://10.91.13.171/Files/NFVIS-REST-VM-Status-1.PNG)  
-![alt txt](http://10.91.13.171/Files/NFVIS-REST-VM-Status-2.PNG)  
+![Alt text](images/NFVIS-REST-VM-Status-1.PNG)  
+![Alt text](images/NFVIS-REST-VM-Status-2.PNG)  
 
 This API also would make it possible to deploy a VM from an image that is already installed on NFVIS, although this is a very lengthy CURL command, and is outside the scope of this brief overview.
   
@@ -34,7 +34,7 @@ Another example would be creating a bridge or a network inside NFVIS:
 If we wanted to create a new network called "IMAPEX-net":  
 *curl -k -v -u user:passwd -H Content-Type:application/vnd.yang.data+xml https://NFVIS-Server/api/config/networks -d "<network><name>imapex-net</name><bridge>lan-br</bridge></network>"*  
   
-![alt-txt](http://10.91.13.171/Files/NFVIS-REST-CreateNetwork-1.PNG)  
-![alt-txt](http://10.91.13.171/Files/NFVIS-REST-CreateNetwork-2.PNG)  
+![Image alt](images/NFVIS-REST-CreateNetwork-1.PNG)  
+![Image alt](images/NFVIS-REST-CreateNetwork-2.PNG)  
 
   
