@@ -116,10 +116,10 @@ file. As you are now going to be contributing to the project - this is obviously
 
 2. Assign yourself to the issue
 
-3. Create a fork of the imapex/101-github-lab repository
+3. Create a fork of your /101-github-lab repository
 
 	```
-   git clone https://github.com/imapex/101-github-lab
+   git clone https://github.com/<your_git_id>/101-github-lab
    ```
 
 4. Create a new branch for your enhancement
