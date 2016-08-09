@@ -122,10 +122,11 @@ file. As you are now going to be contributing to the project - this is obviously
    git clone https://github.com/<your_git_id>/101-github-lab
    ```
 
-4. Create a new branch for your enhancement
+4. Create and checkout a new branch for your enhancement
 
 	```
    git branch -m adding-email-addr
+    git checkout adding-email-addr
    ```
 
 	* **_NOTE_ If your branch is going to exist for a longer period of time why you are developing your feature you could add the upstream repo as a remote for your repository as well.**
@@ -146,8 +147,13 @@ file. As you are now going to be contributing to the project - this is obviously
 6. Commit your changes, be sure to indicate the issue number that you are working on in your commit message
 
 	```
+    git add CONTRIBUTORS.txt
    git commit -m "added email address - closes #XXX"
    ```
+7. Push your changes from local to your forked repository
+    ```
+    git push -u origin adding-email-addr
+    ```
 
 5. From your web browser, go to the github page of your fork, and open a pull request.
 
