@@ -13,7 +13,7 @@
   * CMX
 * Data Center
   * APIC
-  * UCS Manager
+  * [UCS Manager](#/ucs_manager/UCSProgrammability.md)
   * UCS Director
   * Mantl/Shipped
   * NXAPI
