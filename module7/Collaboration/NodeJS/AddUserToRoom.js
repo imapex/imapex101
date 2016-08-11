@@ -6,9 +6,9 @@ var options = { method: 'POST',
    { 'postman-token': 'a05472ec-0f7f-3f31-6657-378aa9b453d1',
      'cache-control': 'no-cache',
      'content-type': 'application/json',
-     authorization: 'Bearer NTIyN2U5NGQtY2JjZi00NGYxLWE0OTMtYzMwYTY3OWQzMDljOGE0YzA3ZTctNjY1' },
+     authorization: 'Bearer <your token>' },
   body: 
-   { roomId: 'Y2lzY29zcGFyazovL3VzL1JPT00vMzRjNTExZTAtNWIzYS0xMWU2LTlmNTgtYzcwMGY5YjM0YWFl',
+   { roomId: '<room ID>',
      personEmail: 'twittbrod@gmail.com',
      isModerator: false },
   json: true };

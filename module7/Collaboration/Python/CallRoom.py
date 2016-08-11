@@ -2,7 +2,7 @@ import requests
 
 url = "https://api.tropo.com/1.0/sessions"
 
-querystring = {"action":"create","token":"58457a4f4a58704e687873666f41524e6b747778796576767845726755504d71586143414e76695347625167","numbertodial":"86879050@ciscospark.com"}
+querystring = {"action":"create","token":"<your Tropo App token>","numbertodial":"<your Spark room URI>"}
 
 headers = {
     'cache-control': "no-cache",

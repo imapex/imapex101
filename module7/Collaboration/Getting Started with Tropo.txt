@@ -1,6 +1,6 @@
 Getting Started with Tropo
 
-Enable outbound access (call and SMS): Create account with @cisco.com email.  Email support@cisco.com and request outbound access.
+Enable outbound access (call and SMS): Create account with @cisco.com email.  Email support@tropo.com and request outbound access.
 
 Documentation: https://developer.ciscospark.com/ --> Docs
 	- Scripting API
