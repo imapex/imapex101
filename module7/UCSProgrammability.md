@@ -34,6 +34,8 @@ The [UCS Platform Emulator 3.1](https://communities.cisco.com/docs/DOC-66688 "Ti
 
 The emulator also has the complete *UCS Manager Object Model Documentation*. The Object Model Documentation has all of the classes, methods, faults, syslog messages, and more. Another benefit is that one or more UCS Platform Emulators can be registered to *UCS Central*, to truly represent a real UCS deployment. The UCS Platform emulator is an integral part of the offerings at Cisco dCloud, for example the [Application Policy Infrastructure Controller 1.2 with Cisco CloudCenter 4.5 v1](https://dcloud-cms.cisco.com/?p=23113 "Title"), dCloud offering utilizes the 3.1 UCS Platform Emulator.
 
+An example of working with the UCS Platform Emulator and the Python SDK is [here](UCSPE_Example.md)
+
 ### Free Tools and Community Support
 
 The *UCSX PowerTool Suite 2.X*, the *Python UCS Manager SDK*, the *Python UCS IMC SDK*, and the *UCS Platform Emulator* are all **free** to customers and partners. And the UCS Programmability tools have [community support](https://communities.cisco.com/community/technology/datacenter/compute-and-storage/ucs_management "Title") and are represented in [Cisco DevNet](https://developer.cisco.com/site/ucs-dev-center/index.gsp "Title").
