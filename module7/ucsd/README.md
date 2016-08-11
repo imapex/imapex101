@@ -198,6 +198,11 @@ https://communities.cisco.com/docs/DOC-59594
 <BR>https://communities.cisco.com/docs/DOC-59842 (Nimble)
 <BR>https://communities.cisco.com/docs/DOC-64511 (PSC)
 <BR>https://communities.cisco.com/docs/DOC-64423 (Spark)
+
+
+**Special Mention**
+<BR>https://github.com/hpreston/cisco_cloud (Hank’s Cisco Cloud library)
+
 <BR>
 ## Derivatives
 
