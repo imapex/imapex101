@@ -14,7 +14,7 @@
 * Data Center
   * APIC
   * [UCS Manager](UCSProgrammability.md)
-  * [UCS Director](/ucsd/README.md)
+  * [UCS Director](/module7/ucsd/README.md)
   * Mantl/Shipped
   * NXAPI
 * _Security_: Future Add
