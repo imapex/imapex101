@@ -2,7 +2,10 @@
 
 Cisco UCS Director abstracts hardware and software into programmable tasks that are assembled together to provision infrastructure across computing, networking, and storage resources that reside on multiple hyper-visors. 
 
+
+
 ## UCS Director Workflows
+Workflows are structured chains of tasks - can include flow control (branching, loops).  Workflows reflect the unique procedures of different organizations.  <BR>
 
 ##### **Importing**
 Workflows are stored in the system database and are maintained outside of the product by importing and exporting them.  Although they are packed in a binary format this makes them easily portable and shared on communities.
@@ -12,10 +15,13 @@ Workflows may be managed by an internal versioning system stored in the database
 One of the most powerful components of UCS Director is its ability to maintain and manage the elements it automates.  Users take action on those elements by executing service requests which in turn calls workflows.  UCS Director inherently supports the ability to rollback a workflow and it is best practice to always include this.
 
 ## UCS Director Custom Tasks
-A task is a single action or operation with inputs and outputs.  Use these to create repeatable atomic units of work.  Anytime you find yourself writing cloudpia script consider if it would be better placed in a custom task.<BR>
+A task is a single action or operation with inputs and outputs.  Anytime you find yourself writing cloudpia script consider if it would be better placed in a custom task.  Tasks should be atomic operations - create a Lun, Set the number of CPUs in a VM, Register an IP address.
+<BR>
  Refer to the Custom Task Getting started guide.<BR> <http://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/ucs-director/custom-task-getting-started-guide/5-5/b_UCSDirector_Custom_Task_Getting_Started_Guide_55.html>
  
- Example Custom Task and report integration
+Example Custom Task - **UCSD Integration with Ansible Tower** <BR><https://github.com/blairhicks/ucsd-ansible-tower.git>
+ 
+ Example Custom Task using API from report Metadata
 
 ```
 importPackage(java.lang);
