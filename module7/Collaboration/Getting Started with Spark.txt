@@ -1,0 +1,16 @@
+Getting Started with Spark
+
+Documentation: https://developer.ciscospark.com/ --> Documentation
+	- API Reference
+	- Developer Mode
+	- Register Apps (OAuth)
+	- How Tos
+	- Integrations
+	- Samples and Tutorials
+
+Get your access token: click on your avatar picture on developer.spark.com
+
+Support:
+	- DevNet Community
+	- Spark public room: #spark4devs
+	- devsupport@ciscospark.com
