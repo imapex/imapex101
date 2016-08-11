@@ -164,7 +164,7 @@ https://communities.cisco.com/docs/DOC-56419
 https://communities.cisco.com/docs/DOC-59594
 ## Some Important Examlpe Worflows
 **Power Shell Examples**
-Administration -> Virtual -> Powershell Agents
+<BR>Administration -> Virtual -> Powershell Agents
 <BR>https://communities.cisco.com/docs/DOC-55779 (Power Shell with rollback)
 <BR>https://communities.cisco.com/docs/DOC-54044 (Power Shell AD DNS example)
 <BR>https://communities.cisco.com/docs/DOC-51153 (Host Profile building script / execute script)
@@ -197,8 +197,13 @@ Administration -> Virtual -> Powershell Agents
 <BR>https://communities.cisco.com/docs/DOC-59904 (XtremIO Example)
 <BR>https://communities.cisco.com/docs/DOC-59842 (Nimble)
 <BR>https://communities.cisco.com/docs/DOC-64511 (PSC)
+<BR>https://communities.cisco.com/docs/DOC-64423 (Spark)
 
 
+**Special Mention**
+<BR>https://github.com/hpreston/cisco_cloud (Hank’s Cisco Cloud library)
+
+<BR>
 ## Derivatives
 
 Outside of the main product suite, UCS Director comes in different forms.
