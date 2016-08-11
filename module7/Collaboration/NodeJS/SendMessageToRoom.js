@@ -6,9 +6,9 @@ var options = { method: 'POST',
    { 'postman-token': 'ecf97bb1-2329-26a4-11ef-fbec4d6f8dff',
      'cache-control': 'no-cache',
      'content-type': 'application/json',
-     authorization: 'Bearer NTIyN2U5NGQtY2JjZi00NGYxLWE0OTMtYzMwYTY3OWQzMDljOGE0YzA3ZTctNjY1' },
+     authorization: 'Bearer <your token>' },
   body: 
-   { roomId: 'Y2lzY29zcGFyazovL3VzL1JPT00vMjljMzA0NTAtY2FjNi0xMWU1LWE3NDgtNTNlYzZjNjcyYWJl',
+   { roomId: '<room ID>',
      file: 'https://developer.cisco.com/images/spark/spark-logo.png',
      text: 'Welcome to Spark!' },
   json: true };

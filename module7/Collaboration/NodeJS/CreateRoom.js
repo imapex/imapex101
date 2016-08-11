@@ -6,7 +6,7 @@ var options = { method: 'POST',
    { 'postman-token': '7ec3398f-f8c4-8c0b-c6a5-9fdc16af061b',
      'cache-control': 'no-cache',
      'content-type': 'application/json',
-     authorization: 'Bearer NTIyN2U5NGQtY2JjZi00NGYxLWE0OTMtYzMwYTY3OWQzMDljOGE0YzA3ZTctNjY1' },
+     authorization: 'Bearer <your token>' },
   body: { title: 'API Created Room' },
   json: true };
 
