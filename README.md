@@ -10,6 +10,6 @@ This class is about building on the foundational development skills you have bui
 * [Module 4: Continuous Integration/Deployment Tools](module4/Module 4 README.md)
 * [Module 5: Deploying Microservices and Apps to Mantl.io](module5/Module 5 README.md)
 * [Module 6: Leveraging Cisco DevNet](module6/Module 6 README.md)
-* [Module 7: Developing with Cisco Platforms](module/Module 7 README.md)
+* [Module 7: Developing with Cisco Platforms](module7/Module 7 README.md)
 * [Module 8: Taking Demo Idea to Application](module8/Module 8 README.md)
 

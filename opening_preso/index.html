@@ -1,0 +1,320 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/sky.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h1>imapex 101</h1>
+            <p>Welcome to class... now what?</p>
+        </section>
+        <section>
+            <section>
+                <h2>Why are we here?</h2>
+            </section>
+            <section>
+                <img src="images/software-eating.jpg">
+            </section>
+            <section>
+                <img src="images/wordcloud1.jpg">
+            </section>
+            <section>
+                <img src="images/friends-dont.jpg">
+            </section>
+            <section>
+                <img src="images/deadcli.jpg">
+            </section>
+            <section>
+                <img src="images/automateall.jpg">
+            </section>
+            <section>
+                <img src="images/infra-as-code-aws.jpg">
+            </section>
+            <section>
+                <img src="images/wanted-devs.jpg">
+                <h3>Are you in?</h3>
+            </section>
+        </section>
+        <section data-background-image="images/evolution.png">
+            <h3 style="background-color: white" class="fragment">Programmability Evolution</h3>
+            <table width="100%" style="border-bottom-style: none">
+                <tr>
+                    <td width="20%" style="border-bottom-style: none">
+                        <div style="color: white; background-color: blue; text-align: center; width: 100%; height: 100%" class="fragment">
+                            <p style="text-decoration: underline; font-size: 70%">
+                                Stage 1</p><p style="font-size: 60%">CLI is all we need</p>
+                        </div>
+                    </td>
+                    <td width="20%" style="border-bottom-style: none">
+                        <div style="color: white; background-color: blue; text-align: center; width: 100%; height: 100%" class="fragment">
+                            <p style="text-decoration: underline; font-size: 70%">
+                                Stage 2</p><p style="font-size: 60%">Fine, we have APIs... (it's just a fad)</p>
+                        </div>
+                    </td>
+                    <td width="20%" style="border-bottom-style: none">
+                        <div style="color: white; background-color: blue; text-align: center; width: 100%; height: 100%" class="fragment">
+                            <p style="text-decoration: underline; font-size: 70%">
+                                Stage 3</p><p style="font-size: 60%">Huh... Python is pretty neat</p>
+                        </div>
+                    </td>
+                    <td width="20%" style="border-bottom-style: none">
+                        <div style="color: white; background-color: blue; text-align: center; width: 100%; height: 100%" class="fragment">
+                            <p style="text-decoration: underline; font-size: 70%">
+                                Stage 4</p><p style="font-size: 60%">Look... We can create VLANs!!!</p>
+                        </div>
+                    </td>
+                    <td width="20%" style="border-bottom-style: none">
+                        <div style="color: white; background-color: blue; text-align: center; width: 100%; height: 100%" class="fragment">
+                            <p style="text-decoration: underline; font-size: 70%">
+                                Stage 5</p><p style="font-size: 60%">Let's solve some new problems.</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr >
+                    <td colspan="2"></td>
+                    <td colspan="2" align="center" valign="middle" style="background-color: lightblue" class="fragment"><h4>We are here...</h4></td>
+                    <td></td>
+                </tr>
+            </table>
+        </section>
+        <section>
+            <h3 >Value to End User</h3>
+            <table>
+                <tr>
+                    <td><img src="images/tools.png" height="30%"></td>
+                    <td class="fragment" style="vertical-align: middle; font-size: 70%">
+                        Python, REST, NXAPI, Mantl, Docker, Tropo,<br>
+                        Spark, ACI-Toolbox
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="images/materials.png" height="30%"></td>
+                    <td class="fragment" style="vertical-align: middle; font-size: 70%">
+                        Tetration, CMX, NetFlow, Identiy, Configs, Health
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="images/finished.png" height="30%"></td>
+                    <td class="fragment" style="vertical-align: middle; font-size: 100%">
+                        ????
+                    </td>
+                </tr>
+            </table>
+        </section>
+        <section>
+            <h2>imapex Principals</h2>
+            <ul>
+                <li class="fragment">We are a grass roots program.</li>
+                <li class="fragment">We are here because we want be.</li>
+                <li class="fragment">We will actively participate.</li>
+                <li class="fragment">We expect constant change.</li>
+                <li class="fragment">When we have an idea, we make it happen.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>imapex Goals</h2>
+            <ul>
+                <li class="fragment">Understand "developers" by becoming one</li>
+                <li class="fragment">Build practical and hands-on understanding of DevOps</li>
+                <li class="fragment">Create <em>useful</em> and <em>functional</em> cross architectural demos</li>
+                <li class="fragment">Develop tribal knowledge and a community of interest</li>
+            </ul>
+        </section>
+        <section data-markdown="">
+            <script type="text/template">
+                ### imapex as code
+                ```
+                Class imapex:
+                    def __init__(engineer):
+                        developer = training(engineer)
+                        return developer
+
+                    def ideas(engineers):
+                        suggestion_box = []
+                        while(engineers.energy == True)
+                            suggestion_box.append(engineer.idea())
+                        return suggestion_box
+
+                    def demo(developers, idea):
+                        app = design(idea)
+                        app = build(app)
+                        return app
+                ```
+            </script>
+        </section>
+        <section>
+            <h2>imapex 101 Goals</h2>
+            <h4>Accelerate application development</h4>
+            <ul>
+                <li class="fragment">Jumpstart skills needed to develop modern demos</li>
+                <li class="fragment">Provide practical information and links for more</li>
+                <li class="fragment">Guided, hands-on exercises introduce </li>
+                <li class="fragment">Self directed exercises explore and reinforce</li>
+                <li class="fragment">Open discussion on best practices and standards </li>
+                <li class="fragment">Agile community maintained content</li>
+            </ul>
+        </section>
+        <section>
+            <section id="class-structure" data-markdown="">
+                <script type="text/template">
+                    ## Class Structure
+
+                    * [Module 1: General Development Skills](#/module1)
+                    * [Module 2: Advanced Git and GitHub](#/module2)
+                    * [Module 3: Advanced Docker and Docker Hub](#/module3)
+                    * [Module 4: Continuous Integration/Deployment Tools](#/module4)
+                    * [Module 5: Deploying to Mantl.io](#/module5)
+                    * [Module 6: Leveraging Cisco DevNet](#/module6)
+                    * [Module 7: Developing with Cisco Platforms](#/module7)
+                    * [Module 8: Taking Demo Idea to Application](#/module8)
+                </script>
+            </section>
+            <section id="module1" data-markdown="">
+                <script type="text/template">
+                    ## Module 1
+                    ####General Development Skills
+
+                    * 12 Factor Concepts
+                    * Basic Linux Tools
+                    * Markdown
+                    * Vagrant
+                    * OpenSource Licenses
+                    * Python Skills
+                    * Writing and Using Test Cases
+                    * Linting
+                    * Boiler Plate Application
+                </script>
+            </section>
+            <section id="module2" data-markdown="">
+                <script type="text/template">
+                    ## Module 2
+                    #### Advanced Git and GitHub
+
+                    * Basic Operaitons
+                    * Issues/Tags
+                    * Forking and Branching
+                    * Stashing Changes
+                    * Helpful git workflows
+                </script>
+            </section>
+            <section id="module3" data-markdown="">
+                <script type="text/template">
+                    ## Module 3
+                    #### Advanced Docker and Docker Hub
+
+                    * Dockerfile Creation
+                    * Registry Considerations
+                    * Tags
+                    * Manual vs Auto-Build Repos
+
+                </script>
+            </section>
+            <section id="module4" data-markdown="">
+                <script type="text/template">
+                    ## Module 4
+                    #### Continuous Integration/Deployment
+
+                    * Intro to CICD Tools
+                    * Drone Deep Dive
+                </script>
+            </section>
+            <section id="module5" data-markdown="">
+                <script type="text/template">
+                    ## Module 5
+                    #### Deploying Microservices and Apps to Mantl.io
+
+                    * Marathon 101
+                    * Consul 101
+                    * Mesos 101
+                    * Traefik 101
+                    * Vault 101
+
+                </script>
+            </section>
+            <section id="module6" data-markdown="">
+                <script type="text/template">
+                    ## Module 6
+                    #### Leveraging Cisco DevNet
+
+                    * Sandboxes
+                    * Building new Learning Labs
+                    * Finding and Accessing Cisco Development Docs
+                    * API and Developer Support through DevNet
+                    * Hackathon and Meetup Support
+                </script>
+            </section>
+            <section id="module7" data-markdown="">
+                <script type="text/template">
+                    ## Module 7
+                    #### Developing with Cisco Platforms
+
+                    * Collaboration
+                    * Enterprise Networking
+                    * Data Center
+                    * _Security_: Future Add
+                    * General Cisco APIs
+                    * Running Containers and Apps on Cisco Infra
+                </script>
+            </section>
+            <section id="module8" data-markdown="">
+                <script type="text/template">
+                    ## Module 8
+                    #### Taking Demo Idea to Application
+
+                    * GitHub Repo Prep
+                    * Docker Repo Prep
+                    * Drone Prep
+                    * MVP Design for Application
+                </script>
+            </section>
+        </section>
+
+        <section>
+            <h1>Questions?</h1>
+        </section>
+    </div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+
+<script>
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        history: true,
+
+// More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+            {src: 'plugin/markdown/marked.js'},
+            {src: 'plugin/markdown/markdown.js'},
+            {src: 'plugin/notes/notes.js', async: true},
+            {
+                src: 'plugin/highlight/highlight.js', async: true, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
