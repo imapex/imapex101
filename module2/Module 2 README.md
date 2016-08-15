@@ -46,7 +46,7 @@ Another useful workflow within Git is the ability to stash local changes prior t
 repository - a good example of this is that you've been working on some changes and want to pull the latest changes that
 others have committed.
 
-In it's simplest form, you can executre the stash/unstash workflow with the following commands
+In it's simplest form, you can execute the stash/unstash workflow with the following commands
 
 ```
 git stash
