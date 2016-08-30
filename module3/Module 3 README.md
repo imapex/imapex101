@@ -9,13 +9,13 @@
 
 # Why... 
 
-Containers, and Docker containers specifically, are rapidly becoming a common way to package and distribute applications.  No longer are installation files, or binaries to download considered an optimal way to recieve and consume software.  The ability to easily contain (no pun intended) and isolate everything needed for an applciaiton, and make it easy to standup in *any* environment makes it ideal for building demos and sample applications.  
+Containers, and Docker containers specifically, are rapidly becoming a common way to package and distribute applications.  No longer are installation files, or binaries to download considered an optimal way to recieve and consume software.  The ability to easily contain (no pun intended) and isolate everything needed for an application, and make it easy to standup in *any* environment makes it ideal for building demos and sample applications.  
 
 # Dockerfile Creation 
 
-A Docker container is built based on instructions in a Dockerfile.  The Dockerfile begins with a source container image, and then each line in the file adds a new layer onto the starting point until the final container image is created.  Dockerfiles range from very simple, few line descriptions, to very complext files with many layers and configuration elements.  
+A Docker container is built based on instructions in a Dockerfile.  The Dockerfile begins with a source container image, and then each line in the file adds a new layer onto the starting point until the final container image is created.  Dockerfiles range from very simple, few line descriptions, to very complex files with many layers and configuration elements.  
 
-As you work with Dockerfiles, and create containers for applicaitons that others will use, it can be helpful to keep some best practices and standards in mind.  We'll walk through an example Dockerfile in the experiments section highlighting some best practices and the impacts.  
+As you work with Dockerfiles, and create containers for applicatioons that others will use, it can be helpful to keep some best practices and standards in mind.  We'll walk through an example Dockerfile in the experiments section highlighting some best practices and the impacts.  
 
 ## Experiments 
 
