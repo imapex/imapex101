@@ -4,6 +4,7 @@
 
 * [12 Factor Concepts](#12-factor-concepts)
   * [Secret Management](#a-sidebar-on-secrets)
+* [Basic Linux Commands](#basic-linux-commands)
 * [Basic Linux Tools](#basic-linux-tools)
   * [curl](#curl)
   * [bash scripts](#bash-scripts)
@@ -123,6 +124,12 @@ Factor III: Config talks about NOT including environment details in your code, b
 * [https://cncf.io](https://cncf.io)
 * [https://en.wikipedia.org/wiki/Conway%27s_law](https://en.wikipedia.org/wiki/Conway%27s_law)
 * [http://www.thepathtoagility.com/wp-content/uploads/2012/03/steveriley2.pdf](http://www.thepathtoagility.com/wp-content/uploads/2012/03/steveriley2.pdf)
+
+# Basic Linux Commands
+
+* `ls`: Lists the contents of a directory, typically you'd execute `ls -l` or `ls -la` to show more details for each file.
+* `cd`: Change to a directory.  When you open a terminal prompt the first time, you'll likely see `$` followed by your cursor.  you can use `cd` to move to another directory.  This is pretty much the same as in Windows.
+* `mkdir`: Create a directory using `mkdir`.
 
 # Basic Linux Tools
 
