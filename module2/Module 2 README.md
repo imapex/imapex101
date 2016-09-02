@@ -11,7 +11,7 @@ repositories, cloning, and making commits to a simple repository.
 
 The official tutorial for Github is a useful resource and can be find [Here](https://guides.github.com/activities/hello-world/)
 
-Issues / Tags
+GitHub Issues / Tags
 -----------------------
 
 Issues are the primary vehicle by which feature enhancements and bug fixes are tracked.
