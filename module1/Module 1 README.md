@@ -868,7 +868,7 @@ We'll create a new directory and walk through some basic Vagrant exercises.
 	end
 	```
 	
-	* The basic Vagrantfile is nearly all just comments and sample configuraitons for customization.  Only a very small part is actually active.  That part is listed here to highlight how little is needed to get started with vagrant
+	* The basic Vagrantfile is nearly all just comments and sample configurations for customization.  Only a very small part is actually active.  That part is listed here to highlight how little is needed to get started with vagrant
 	
 	```
 	Vagrant.configure(2) do |config|
