@@ -58,7 +58,7 @@ touch Dockerfile
 
 ## A Simple Dockerfile
 
-* : Dockerfiles use `FROM` to indicate the base image
+* Dockerfiles use `FROM` to indicate the base image
 
 	```
 	FROM debian:latest
@@ -70,17 +70,32 @@ touch Dockerfile
 
 [item]: # (/slide)
 
+[item]: # (slide)
+
+## Simple Docker lifecycle
+
+* Edit `Dockerfile`
+* `docker build`
+* `docker run`
+* `GOTO 10`  `:-)`
+* Whenever you edit your `Dockerfile`, you need to rebuild your container.
+
+[item]: # (/slide)
+
+
+[item]: # (slide)
+
+## Docker CLI: Building a Docker image
+
 * `docker build` is the command to build the container image.  When running use `-t <repositoryname>:<tag>` format to provide a repository name and tag for the image.  If you fail to specify, you can only refer to the image by the Image Id.
 * Repository Names are in the format of `<username or org>/<repo-name>`.  This will be required if you plan to `push` your image to a registry.  
 * The last parameter is the location to find the Dockerfile to use.  Specifying `.` looks in the current directory for `Dockerfile`
 
-[item]: # (slide)
+```
 
-## Building a Docker image
+$ docker build -t <your username>/imapex101_dockerfile:latest .
 
-	```
-	$ docker build -t <your username>/imapex101_dockerfile:latest .
-	```
+```
 
 [item]: # (/slide)
 
@@ -104,11 +119,11 @@ touch Dockerfile
 	REPOSITORY                      TAG                 IMAGE ID            CREATED             SIZE
 	<your username>/imapex101_dockerfile   latest              1b01529cc499        23 hours ago        125.1 MB
 
-	```
+```
 
 [item]: # (slide)
 
-## Accessing the Docker image shell
+## Docker CLI: Accessing the Docker image shell
 
 ```
 	docker run -it <your username>/imapex101_dockerfile /bin/bash
@@ -122,18 +137,36 @@ touch Dockerfile
 
 [item]: # (/slide)
 
-## Listing running or stopped containers
+[item]: # (slide)
+
+## Docker CLI: Listing running or stopped containers
+
+Run the `docker ps -a` command to see the remnants of your container... you could restart it from this state with docker start, but another docker run would create a new one
 
 ```
-	# run this command to see the remnants of your container... you could restart it from this state with docker start, but another docker run would create a new one
 	$ docker ps -a
+```
+[item]: # (/slide)
+
+[item]: # (slide)
+
+### Example Output
+
+```
 	CONTAINER ID        IMAGE                           COMMAND                  CREATED             STATUS                     PORTS               NAMES
 	80333d17d6c2        <your username>/imapex101_dockerfile   "/bin/bash"              35 seconds ago      Exited (0) 3 seconds ago                       nauseous_raman
-	```
+```
+[item]: # (slide)
 
-* **Dockerfile Content**: Let's add some more parts to the Dockerfile
-	* `MAINTAINER` provides details about the author.  Providing your name and email are typical.  Email address within `< >` symbols.
-	* The next layer should install any packages needed.  Use a single `RUN` command and leverage `&&` to string commands together, and `\` to allow readabilty with wrapping
+## Dockerfile: MAINTAINER and RUN
+* `MAINTAINER` provides details about the author.  Providing your name and email are typical.  Email address within `< >` symbols.
+* The next layer should install any packages needed.  Use a single `RUN` command and leverage `&&` to string commands together, and `\` to allow readabilty with wrapping
+
+[item]: # (/slide)
+
+[item]: # (slide)
+
+## Example
 
 ```
 FROM debian:latest
@@ -151,8 +184,13 @@ RUN apt-get update && apt-get install -y \
  && rm -rf /var/lib/apt/lists/*
 ```
 
-* Build a new version of the container
-	* Note the references to `Step 2` and `Step 3` and the `running in` comments.  Each command in the file, is a Step, and each step is a new layer.  Minimizing the number of layers created is always a goal in Dockerfile creation
+* Now, build your image
+
+`docker build -t <your username>/imapex101_dockerfile:latest .`
+
+[item]: # (/slide)
+
+* Note the references to `Step 2` and `Step 3` and the `running in` comments.  Each command in the file, is a Step, and each step is a new layer.  Minimizing the number of layers created is always a goal in Dockerfile creation
 
 	```
 	docker build -t <your username>/imapex101_dockerfile:latest .
@@ -191,7 +229,9 @@ RUN apt-get update && apt-get install -y \
 	Successfully built 331e39ad1dc4  
 	```
 
-* **Dockerfile Content**:  Use `EXPOSE` to specify what port(s) your container will use to host services externally.  For example, if you are building a Web App Container, you'll likely expose port 80.  
+[item]: # (slide)
+## Dockerfile: EXPOSE 
+* Use `EXPOSE` to specify what port(s) your container will use to host services externally.  For example, if you are building a Web App Container, you'll likely expose port 80.  
 
 ```
 FROM debian:latest
@@ -211,13 +251,14 @@ RUN apt-get update && apt-get install -y \
 EXPOSE 80
 
 ```
+[item]: # (/slide)
 
 * Build a new version of the container
 	* Note how the process takes much less time and the references to "Using cache".  Because there has been no change in the earlier steps, docker needn't rerun them
 	* This is why proper consideration in the order of steps in your container creation is critical.  
 	* Keep the steps likely to change (ie Copying in your code) to the end.  
 
-	```
+```
 	docker build -t <your username>/imapex101_dockerfile:latest .
 
 	Sending build context to Docker daemon 2.048 kB
@@ -234,7 +275,11 @@ EXPOSE 80
 	 ---> 788c0d174e3d
 	Removing intermediate container 67d60d70e80b
 	Successfully built 788c0d174e3d
-	```
+```
+
+[item]: # (slide)
+
+## Adding an app
 
 * Now we'll create a program to run in the container.  Run these commands to create a basic Hello World shell script.  
 
@@ -246,12 +291,16 @@ echo "sleep 2" >> hello_world.sh
 echo "done" >> hello_world.sh
 ```
 
-* **Dockerfile Content**:
-	* Use `COPY` to bring in your code to the container.  
-	* After copying your code into the container, use `RUN` commands to take whatever actions needed.  
-	* Use `CMD` to instruct the container what to do upon execution.  
+[item]: # (/slide)
 
-	```
+[item]: # (slide)
+
+## Dockerfile: COPY and CMD
+* Use `COPY` to bring in your code to the container.  
+* After copying your code into the container, use `RUN` commands to take whatever actions needed.  
+* Use `CMD` to instruct the container what to do upon execution.  
+
+```
 	FROM debian:latest
 	MAINTAINER Your Name <email@domain.com>
 
@@ -272,7 +321,9 @@ echo "done" >> hello_world.sh
 	RUN chmod +x /root/hello_world.sh
 
 	CMD ["/root/hello_world.sh"]
-	```
+```
+	
+[item]: # (/slide)
 
 * Build a new version of the container
 
@@ -304,6 +355,8 @@ echo "done" >> hello_world.sh
 	Successfully built afde9a78e299
 	```
 
+[item]: # (slide)
+## Run container with app
 * Run the final container version to execute the program.  We use `-d` to run our container in the background and print out the container id
 
 ```
@@ -311,6 +364,7 @@ docker run -d --name dockerfile <your username>/imapex101_dockerfile:latest
 
 8b5b52eaa9a7c838c77bed791315a42ac7270e714c5fcd3ffbdbc49ef94b4316
 ```
+[item]: # (/slide)
 
 * Check out the status of the container with a few commands here
 
@@ -320,8 +374,12 @@ docker ps
 
 CONTAINER ID        IMAGE                                         COMMAND                  CREATED              STATUS              PORTS               NAMES
 8b5b52eaa9a7        <your username>/imapex101_dockerfile:latest   "/root/hello_world.sh"   About a minute ago   Up About a minute   80/tcp              dockerfile
+```
 
-# Let's see if the container is "running" our application by checking out the logs
+[item]: # (slide)
+
+## Docker CLI: docker logs
+```
 docker logs dockerfile
 
 Hello World
@@ -336,18 +394,22 @@ Hello World
 
 # Sure enough, it's hello worlding away
 # you can stop and start the same container like this
-docker stop dockerfile
+$ docker stop dockerfile
+```
+[item]: # (/slide)
+
+```
 
 # Look at all docker containers and see its stopped
-docker ps -a
+$ docker ps -a
 
 CONTAINER ID        IMAGE                                         COMMAND                  CREATED             STATUS                        PORTS               NAMES
 8b5b52eaa9a7        <your username>/imapex101_dockerfile:latest   "/root/hello_world.sh"   4 minutes ago       Exited (137) 14 seconds ago                       dockerfile
 
 # Start it back up
-docker start dockerfile
+$ docker start dockerfile
 
-docker ps
+$ docker ps
 
 CONTAINER ID        IMAGE                                         COMMAND                  CREATED             STATUS              PORTS               NAMES
 8b5b52eaa9a7        <your username>/imapex101_dockerfile:latest   "/root/hello_world.sh"   5 minutes ago       Up 2 seconds        80/tcp              dockerfile
@@ -386,6 +448,10 @@ There are several options for enterprises looking for a private registry solutio
 
 Some other companies that provide registries are
 
+[item]: # (slide)
+
+## Docker Registries
+
 * Docker
 	* Public: [hub.docker.com](https://hub.docker.com)
 	* Enterprise Private: [Docker Trusted Registry](https://docs.docker.com/docker-trusted-registry/)
@@ -398,6 +464,8 @@ Some other companies that provide registries are
 	* Public: [Google Container Registry](https://cloud.google.com/container-registry/)
 * Amazon EC2 Container Registry
 	* Public: [EC2 Container Registry](https://aws.amazon.com/ecr/)
+
+[item]: # (/slide)
 
 When leveraging a registry other than hub.docker.com, you must include it in all comands and container names.  For example, `docker pull quay.io/acme/demo:latest` would use the registry `quay.io`, and access the container `demo`, and tag `latest` from user `acme`.  
 
@@ -567,7 +635,7 @@ To really use Docker effectively, you must understand the concept of tagging.  N
 
 # Manual vs Auto-Build Repos
 
-So far, we've been building our images localling on our laptops, or downloading them from repositories.  This is great for testing and learning, but isn't practical for actual projects and applications.  The goal of DevOps, is to automate all the little things like building containers and pushing them to registries.  For our projects in imapex, there are two methods we'll look at for building and updating repos.  
+So far, we've been building our images locally on our laptops, or downloading them from repositories.  This is great for testing and learning, but isn't practical for actual projects and applications.  The goal of DevOps, is to automate all the little things like building containers and pushing them to registries.  For our projects in imapex, there are two methods we'll look at for building and updating repos.  
 
 The simplest solution are Automated Build repos.  These are repositories that are created and linked to a source code repository such as GitHub.  They leverage WebHooks to be notified anytime there is an event like a code commit, branch update, or pull request.  When these events happen, the registry (ie Docker Hub) will clone the code and attempt to build a new image based on the Dockerfile.  As long as the build completes successfully, it will publish a new image to the repository.  This solution is easy to setup, and requires nothing outside of a GitHub and Docker Hub account, but lacks methods for testing or validation of the changed code in the repository.  
 

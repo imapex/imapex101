@@ -1,7 +1,9 @@
 
-## Building a Docker image
+## Simple Docker lifecycle
 
-	```
-	$ docker build -t <your username>/imapex101_dockerfile:latest .
-	```
+* Edit `Dockerfile`
+* `docker build`
+* `docker run`
+* `GOTO 10`  `:-)`
+* Whenever you edit your `Dockerfile`, you need to rebuild your container.
 

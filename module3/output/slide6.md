@@ -1,13 +1,13 @@
 
-## Accessing the Docker image shell
+## Docker CLI: Building a Docker image
+
+* `docker build` is the command to build the container image.  When running use `-t <repositoryname>:<tag>` format to provide a repository name and tag for the image.  If you fail to specify, you can only refer to the image by the Image Id.
+* Repository Names are in the format of `<username or org>/<repo-name>`.  This will be required if you plan to `push` your image to a registry.  
+* The last parameter is the location to find the Dockerfile to use.  Specifying `.` looks in the current directory for `Dockerfile`
 
 ```
-	docker run -it <your username>/imapex101_dockerfile /bin/bash
 
-	# now you're in the container, type exit to stop the container
-	root@80333d17d6c2:/# exit
+$ docker build -t <your username>/imapex101_dockerfile:latest .
+
 ```
-
-* `-it` attaches to STDIN and creates a tty terminal to use
-* `/bin/bash` specifies the command to run inside the container
 

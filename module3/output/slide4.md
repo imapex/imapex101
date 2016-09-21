@@ -1,7 +1,7 @@
 
 ## A Simple Dockerfile
 
-* : Dockerfiles use `FROM` to indicate the base image
+* Dockerfiles use `FROM` to indicate the base image
 
 	```
 	FROM debian:latest
