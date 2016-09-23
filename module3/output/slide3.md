@@ -1,9 +1,8 @@
 
-## Create a new directory for the Dockerfile practice
+##  Docker Landscape
 
-```
-mkdir imapex101_dockerfile
-cd imapex101_dockerfile
-touch Dockerfile
-```
+* Docker for Mac vs Docker Toolbox
+* Docker Hub: Docker registry
+* Docker Swarm: Clustering for Docker
+* Docker is not the only game in town: rkt, LXC
 

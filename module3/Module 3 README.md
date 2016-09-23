@@ -2,10 +2,18 @@
 
 # Module 3: Advanced Docker and Docker Hub
 
-* [Dockerfile Creation](#dockerfile-creation)
-* [Registry Considerations](#registry-considerations)
+* [Dockerfiles](#section-1:-dockerfiles)
+* [Docker Registries](#registry-considerations)
 * [Tags](#tags)
 * [Manual vs Auto-Build Repos](#manual-vs-auto-build-repos)
+
+[item]: # (slide)
+# Section 1: Dockerfiles
+[item]: # (/slide)
+
+A Docker container is built based on instructions that you write in a Dockerfile.  The Dockerfile begins with a source container image, and then each line in the file adds a new layer onto the starting point until the final container image is created.  Dockerfiles range from very simple, few line descriptions, to very complex files with many layers and configuration elements.  
+
+As you work with Dockerfiles, and create containers for applications that others will use, it can be helpful to keep some best practices and standards in mind.  We'll walk through an example Dockerfile in the experiments section to demonstrate some best practices.  
 
 # Why...
 
@@ -32,11 +40,6 @@ Containers, and Docker containers specifically, are rapidly becoming a common wa
 
 [item]: # (/slide)
 
-# Dockerfile Creation
-
-A Docker container is built based on instructions that you write in a Dockerfile.  The Dockerfile begins with a source container image, and then each line in the file adds a new layer onto the starting point until the final container image is created.  Dockerfiles range from very simple, few line descriptions, to very complex files with many layers and configuration elements.  
-
-As you work with Dockerfiles, and create containers for applications that others will use, it can be helpful to keep some best practices and standards in mind.  We'll walk through an example Dockerfile in the experiments section to demonstrate some best practices.  
 
 ## Experiments
 
@@ -436,7 +439,11 @@ For this exercise, build a new Dockerfile that...
 * Uses an "alpine" image (you'll need to find out what that means)
 * Runs [dbarnett/python-helloworld](https://github.com/dbarnett/python-helloworld) when started
 
-# Registry Considerations
+---------------------------------------
+
+[item]: # (slide)
+# Section 2: Registry Considerations
+[item]: # (/slide)
 
 With Docker, "registry" refers to a server that stores and hosts container images for centralized distribution.  [hub.docker.com](https://hub.docker.com) is the public, default registry for Docker images, but it is not the only option to be aware of.  
 
@@ -520,8 +527,13 @@ Using the basic public registry from docker, or other public registries are fine
 * Create a public registry called demo and push up the sample Docker container created above.  
 * Hint... you'll need to work out how to login using the docker cli
 
-# Tags
+---------------------------------
 
+[item]: # (slide)
+# Section 3: Tags
+[item]: # (/slide)
+
+[item]: # (slide)
 There is a heirarchy of objects within Docker that are worth having a solid understanding of.
 
 * Registry
@@ -529,13 +541,16 @@ There is a heirarchy of objects within Docker that are worth having a solid unde
 		* Repository
 			* Tagged Image
 
+[item]: # (/slide)
+
 What we commonly think of as a Docker container would better be described as a _specificly **tagged image**, contained within a **repository**, managed by a **user or organization**, hosted on a particular **registry**_
 
 To be accurate, *container* is actually an instance of a tagged image that is running, or is currently stopped.  
 
 When getting started with Docker, it is easy, and perfectly fine to slip over the details, but if you are going to be actively building software to be distributed with containers, it's critical to understand the actualy objects.  
 
-Within a single Repository, tags are used to provide different versions of what is typically the same application or service.  Some common uses of the tags would be
+[item]: # (slide)
+Within a single Repository, tags are used to provide different versions of what is typically the same application or service.  Some common uses of the tags would be:
 
 * Actual version control
 	* It is common to see tags like **:v0.1**, **:v0.2**, **:v0.3**
@@ -545,6 +560,8 @@ Within a single Repository, tags are used to provide different versions of what 
 	* **:dev**, **:prod**, **:qa**
 * Indications of Git Branches/Tags
 	* **:feature/test**, **:feature/ui**, **:master**
+
+[item]: # (/slide)
 
 The tag **:latest** is a well understood standard in Docker to indicate a "default" image.  If you do not specify a particular tag when building or pulling, latest will be assumed.  It is up to the owner of the repository to manage what image is provided by **:latest**, and in fact it is possible to have a repository lacking a **:latest** tag.  That is considered bad practice and should be avoided.  Also remember that **:latest** rarely actually indicates the most recently built container... 	
 
@@ -632,8 +649,9 @@ To really use Docker effectively, you must understand the concept of tagging.  N
 * Pull down CentOS images for version 6 and 7 and start containers based on each
 * Think about how you'll use tags with your demo applicaitons... be prepared to discuss and defend your ideas
 
+--------------------------------------------------------
 
-# Manual vs Auto-Build Repos
+# Section 4: Manual vs Auto-Build Repos
 
 So far, we've been building our images locally on our laptops, or downloading them from repositories.  This is great for testing and learning, but isn't practical for actual projects and applications.  The goal of DevOps, is to automate all the little things like building containers and pushing them to registries.  For our projects in imapex, there are two methods we'll look at for building and updating repos.  
 

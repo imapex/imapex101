@@ -1,8 +1,7 @@
 
-##  Docker Landscape
+##  Why Containers
 
-* Docker for Mac vs Docker Toolbox
-* Docker Hub: Docker registry
-* Docker Swarm: Clustering for Docker
-* Docker is not the only game in town: rkt, LXC
+* Easily package your application dependencies
+* Deploy on many container-friendly platforms
+* Container registries make it easy to distribute
 
