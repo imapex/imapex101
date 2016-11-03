@@ -17,6 +17,11 @@
   * [UCS Director](/module7/ucsd/README.md)
   * Mantl/Shipped
   * NXAPI
+* Service Provider
+  * Network Services Orchestrator (NSO)
+  * YANG Development Kit (YDK)
+  * Virtual Topology System (VTS)
+  * Elastic Services Controller (ESC)
 * _Security_: Future Add
   * _OpenDNS_
   * _AMP_
